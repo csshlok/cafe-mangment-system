@@ -6,10 +6,10 @@ from PIL import image
 
 ###CODE START###
 val = [
-(1, ‘Banana Pancake’, ‘Pancakes’, 200),
-(2, ‘Oatmeal Pancake with Cinnamon Apples’, ‘Pancakes’, 250), (3, ‘Blueberry Lemon Ricotta Pancake’, ‘Pancakes’, 300),
-(4, ‘Original Classic Pancake’, ‘Pancakes’, 200),
-(5, ‘Chocolate Chip Pancake’, ‘Pancakes’, 250),
+(1, 'Banana Pancake', 'Pancakes', 200),
+(2, 'Oatmeal Pancake with Cinnamon Apples', 'Pancakes', 250), (3, 'Blueberry Lemon Ricotta Pancake', 'Pancakes', 300),
+(4, 'Original Classic Pancake', 'Pancakes', 200),
+(5, 'Chocolate Chip Pancake', 'Pancakes', 250),
 (6, ‘Cinnamon Roll Pancake’, ‘Pancakes’, 200),
 (7, ‘Strawberry Buttermilk Pancake’, ‘Pancakes’, 275),
 (8, ‘Oreo Pancake’, ‘Pancakes’, 250),
