@@ -5,6 +5,7 @@ import csv
 from PIL import image
 
 ###CODE START###
+########MENU#########
 val = [
 (1, 'Banana Pancake', 'Pancakes', 200),
 (2, 'Oatmeal Pancake with Cinnamon Apples', 'Pancakes', 250), (3, 'Blueberry Lemon Ricotta Pancake', 'Pancakes', 300),
