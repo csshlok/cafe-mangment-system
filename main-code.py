@@ -56,4 +56,47 @@ val = [
 (53,'Potato Puff','Sides',50),
 (54,'Glazed Strawberry','Sides',50), (55,'Classic Side Salad','Sides',75), (56,'Coleslaw','Sides', 75), 
 (57,'Garlic Bread','Sides',50), (58,'Chargrilled Veggies','Sides',75), 
-(59,'Cheese Sticks','Sides',50), (60,'Hummus Bagel','Sides',100),
+(59,'Cheese Sticks','Sides',50), (60,'Hummus Bagel','Sides',100)
+
+
+
+################### FUNCTIONS/ MAIN CODE STARTS HERE #############
+
+#member verification
+#status: OPERATIONAL
+def memberverify():
+    global memid
+    memid = int(input("Enter Member ID"))
+    print("You entered ", memid)
+    try:
+        cursor = mydb.cursor()
+        sql = '''select * from membershipdetails where membershipid=''' + str(memid)+";"
+        cursor.execute(sql)
+        r=cursor.fetchone()
+    print("Your details are:" , r)
+    global cust_name
+    global cust_no
+    cust_name = r[1]
+    cust_no = r[3]
+    global memberconfirm
+    memberconfirm = 1
+    except Exception as e:
+        print(e)
+ 
+#register a member
+10 StockInDesign: The LAB of InDesign Templates
+#status: OPERATIONAL
+def registerprocess():
+ try:
+ mycursor = mydb.cursor()
+ f1=input(“membershipid”)
+ f2=input(“name”)
+ f3=input(“dob in yyyy-mm-dd format”)
+ f4=input(“phone number”)
+ sql = “INSERT INTO membershipdetails VALUES (%s, %s, %s, 
+%s)”
+ l = (f1,f2,f3,f4)
+ mycursor.execute(sql,l)
+ mydb.commit()
+ except Exception as e:
+ print(e
