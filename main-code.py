@@ -98,3 +98,23 @@ def registerprocess():
     mydb.commit()
     except Exception as e:
         print(e)
+
+#adding a dish
+#status: untested
+ 
+def adddish():
+ print(“Adding a Dish”)
+ im = Image.open(r”/Users/pranavjain/Desktop/Projects/JY Pancake 
+House/JY Pancake House Final Proposal-01.png”)
+ im.show()
+ try:
+ mycursor = mydb.cursor()
+ v1=input(“Enter DishID”)
+ v2=input(“Enter Qty”)
+ sql = “INSERT INTO billtest VALUES (%s, %s)”
+ l = (v1,v2)
+ mycursor.execute(sql,l)
+ mydb.commit()
+ print(“Added”)
+ except Exception as e:
+ print(e
