@@ -88,14 +88,14 @@ def memberverify():
 def registerprocess():
     try:
         mycursor = mydb.cursor()
-    f1=input(:"membershipid")
-    f2=input("name")
-    f3=input("dob in yyyy-mm-dd format")
-    f4=input("phone number")
-    sql = '''INSERT INTO membershipdetails VALUES (%s, %s, %s, %s)'''
-    l = (f1,f2,f3,f4)
-    mycursor.execute(sql,l)
-    mydb.commit()
+        f1=input(:"membershipid")
+        f2=input("name")
+        f3=input("dob in yyyy-mm-dd format")
+        f4=input("phone number")
+        sql = '''INSERT INTO membershipdetails VALUES (%s, %s, %s, %s)'''
+        l = (f1,f2,f3,f4)
+        mycursor.execute(sql,l)
+        mydb.commit()
     except Exception as e:
         print(e)
 
@@ -105,13 +105,13 @@ def registerprocess():
 def adddish():
     print(“Adding a Dish”)
     im = Image.open(r"#status: will add soon")
- im.show()
- try:
- mycursor = mydb.cursor()
- v1=input(“Enter DishID”)
- v2=input(“Enter Qty”)
- sql = “INSERT INTO billtest VALUES (%s, %s)”
- l = (v1,v2)
+    im.show()
+    try:
+        mycursor = mydb.cursor()
+        v1=input(“Enter DishID”)
+        v2=input(“Enter Qty”)
+        sql = '''INSERT INTO billtest VALUES (%s, %s)'''
+        l = (v1,v2)
  mycursor.execute(sql,l)
  mydb.commit()
  print(“Added”)
