@@ -73,13 +73,13 @@ def memberverify():
         sql = '''select * from membershipdetails where membershipid=''' + str(memid)+";"
         cursor.execute(sql)
         r=cursor.fetchone()
-    print("Your details are:" , r)
-    global cust_name
-    global cust_no
-    cust_name = r[1]
-    cust_no = r[3]
-    global memberconfirm
-    memberconfirm = 1
+        print("Your details are:" , r)
+        global cust_name
+        global cust_no
+        cust_name = r[1]
+        cust_no = r[3]
+        global memberconfirm
+        memberconfirm = 1
     except Exception as e:
         print(e)
  
@@ -112,8 +112,8 @@ def adddish():
         v2=input(“Enter Qty”)
         sql = '''INSERT INTO billtest VALUES (%s, %s)'''
         l = (v1,v2)
- mycursor.execute(sql,l)
- mydb.commit()
- print(“Added”)
- except Exception as e:
- print(e
+        mycursor.execute(sql,l)
+        mydb.commit()
+        print(“Added”)
+    except Exception as e:
+        print(e)
