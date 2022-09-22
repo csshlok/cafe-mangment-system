@@ -150,3 +150,39 @@ def modifyqty():
         mydb.commit()
     except Exception as e:
         print(e)
+
+#delete the billing of a dish
+#status: untested
+ 
+def deletedish():
+    print("Delete Dish")
+    try:
+        mycursor = mydb.cursor()
+        sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
+        mycursor.execute(sql)
+        print("Here is your current order")
+        r=mycursor.fetchall()
+        t=0
+        print(r)
+        while t < len(r):
+            print("DishID",r[t][0])
+            print("Name",r[t][2])
+            print("QTY",r[t][1])
+            t=t+1
+            mydb.commit()
+    except Exception as e:
+        print(e)
+    try:
+        mycursor = mydb.cursor()
+        del1=input("Enter dishid to be deleted")
+        sql = '''delete from billtest where dishid=''' + str(del1) + ";"
+        mycursor.execute(sql)
+        mydb.commit()
+        print("Dish Deleted")
+    except Exception as e:
+        print(e)
+ 
+#printing the bill
+#status: untested
+ 
+def printing():
