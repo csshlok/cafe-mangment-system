@@ -63,7 +63,7 @@ val = [
 ################### FUNCTIONS/ MAIN CODE STARTS HERE #############
 
 #member verification
-#status: OPERATIONAL
+#status: untested
 def memberverify():
     global memid
     memid = int(input("Enter Member ID"))
@@ -84,19 +84,17 @@ def memberverify():
         print(e)
  
 #register a member
-10 StockInDesign: The LAB of InDesign Templates
-#status: OPERATIONAL
+#status: untested
 def registerprocess():
- try:
- mycursor = mydb.cursor()
- f1=input(“membershipid”)
- f2=input(“name”)
- f3=input(“dob in yyyy-mm-dd format”)
- f4=input(“phone number”)
- sql = “INSERT INTO membershipdetails VALUES (%s, %s, %s, 
-%s)”
- l = (f1,f2,f3,f4)
- mycursor.execute(sql,l)
- mydb.commit()
- except Exception as e:
- print(e
+    try:
+        mycursor = mydb.cursor()
+    f1=input(:"membershipid")
+    f2=input("name")
+    f3=input("dob in yyyy-mm-dd format")
+    f4=input("phone number")
+    sql = '''INSERT INTO membershipdetails VALUES (%s, %s, %s, %s)'''
+    l = (f1,f2,f3,f4)
+    mycursor.execute(sql,l)
+    mydb.commit()
+    except Exception as e:
+        print(e)
