@@ -103,9 +103,8 @@ def registerprocess():
 #status: untested
  
 def adddish():
- print(“Adding a Dish”)
- im = Image.open(r”/Users/pranavjain/Desktop/Projects/JY Pancake 
-House/JY Pancake House Final Proposal-01.png”)
+    print(“Adding a Dish”)
+    im = Image.open(r"#status: will add soon")
  im.show()
  try:
  mycursor = mydb.cursor()
