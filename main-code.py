@@ -117,3 +117,36 @@ def adddish():
         print(“Added”)
     except Exception as e:
         print(e)
+
+#modify the quantity of a dish
+#status: untested
+ 
+def modifyqty():
+    print(“Modify Quantity”)
+    try:
+        mycursor = mydb.cursor()
+        sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
+        mycursor.execute(sql)
+        print("Here is your current order")
+        r=mycursor.fetchall()
+        t=0
+        print(r)
+        while t < len(r):
+            print("DishID",r[t][0])
+            print("Name",r[t][2])
+            print("QTY",r[t][1])
+            t=t+1
+            mydb.commit()
+        except Exception as e:
+            print(e)
+    modifydishid = int(input("Enter Dish ID"))
+    modifyqty = int(input("Enter New Qty"))
+    try:
+        mycursor = mydb.cursor()
+        sql = '''Update billtest set qty=’”+ str(modifyqty) +”’ where dishid='''+ str(modifydishid) +";"
+        #to test by print(sql)
+        mycursor.execute(sql)
+        print("Record Updated")
+        mydb.commit()
+    except Exception as e:
+        print(e)
