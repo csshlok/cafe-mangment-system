@@ -246,6 +246,78 @@ def printing():
                             except Exception as e: 
                                 print(e)
                         break 
-    except Exception as e:
-        print(e)
+                except Exception as e:
+                    print(e)
+            ############### P R I N T I N G ( M E M B E R ) ###################
+            f2=open(filename, mode=”r”) 
+            x=csv.reader(f2, delimiter=”,”) 
+            global hi
+            hi=" " 
+            print (“ “)
+            print (“INVOICE”) 
+            print (“=” * 55) 
+            print(datetime_object)
+            print (“%25s”%cust_name, “%5s”%hi, “%10s”%hi,“%10s”%cust_no)
+            print (“=” * 55)
+            print (“%25s”%”Item”, “%5s”%”Qty”, “%10s”%”Rate”,“%10s”%”Total”)
+            print (“=” * 55)
+            for i in x:
+                print (“%25s”%i[0],”%5s”%i[1],”%10s”%i[2],”%10s”%i[3])
+                print (“=” * 55)
+                gst = (sumy/100)*15
+                memdisc = (sumy/20)
+                gtotal = (sumy+(2*gst))-memdisc-inrdeduct
+                add_loyaltypoints()
+gst) gst)
+print (“%25s”%”CGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%
+print (“%25s”%”SGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%
+print (“%25s”%”Total”,”%5s”%hi,”%10s”%hi,”%10s”%float(sumy)) print (“%25s”%”Member Discount”,”%5s”%hi,”%10s”%”-
+”,”%10s”%memdisc)
+print (“%25s”%”Points Earned”,”%5s”%hi,”%10s”%hi,”%10s”%pointsearned)
+print (“%25s”%”Evaluation of Points Used”,”%5s”%hi,”%10s”%”- ”,”%10s”%inrdeduct)
+print (“=” * 55)
+print (“%25s”%”GRAND TOTAL”,”%5s”%hi,”%10s”%”INR”,”%10s”%gtotal)
+print (“=” * 55) f2.close()
+############### S T O R A G E ( M E M B E R ) ###################
+f3 = open(filenametxt, “a”) f2=open(filename, mode=”r”) x=csv.reader(f2, delimiter=”,”)
+f3.write(“INVOICE \n”)
+StockInDesign: The LAB of InDesign Templates
+
+ 16
+f3.write(“=” * 55) f3.write(“\n”) f3.write(str(datetime_object)) f3.write(“\n”) f3.write(cust_name) f3.write(“\n”) f3.write(cust_no) f3.write(“\n”)
+f3.write(“=” * 55) f3.write(“\n”)
+f3.writelines(“%25s”%”Item””\t””%5s”%”Qty””\ t””%10s”%”Rate””\t””%10s”%”Total”)
+f3.write(“\n”) f3.write(“=” * 55)
+final=()
+for i in x:
+global aa
+global bb
+global cc
+global dd
+aa=i[0]
+bb=i[1]
+cc=i[2]
+dd=i[3]
+final = aa+”\t”+bb+”\t”+cc+”\t”+dd f3.write(“\n”)
+#print(final)
+f3.write(str(final)) f3.write(“\n”)
+f3.write(“=” * 55)
+f3.write(“\n”) f3.write(“%25s”%”Total”+’\t’+”%5s”%hi+’\t’+”%10s”%hi+’\
+t’+”%10s”%float(sumy)) f3.write(“\n”)
+f3.write(“%25s”%”Member Discount”+”\t”+”%5s”%hi+”\ t”+”%10s”%”-”+”\t”+”%10s”%memdisc)
+f3.write(“\n”)
+f3.write(“%25s”%”Points Earned”+”\t”+”%5s”%hi+”\
+StockInDesign: The LAB of InDesign Templates
+
+17
+t”+”%10s”%hi+”\t”+”%10s”%pointsearned) f3.write(“\n”)
+f3.write(“%25s”%”Evaluation of Points Used”+”\ t”+”%5s”%hi+”\t”+”%10s”%”-”+”\t”+”%10s”%inrdeduct)
+f3.write(“\n”) f3.write(“%25s”%”CGST(15%)”+”\t”+”%5s”%hi+”\t”+”%10s”%hi+”\
+t”+”%10s”%gst) f3.write(“\n”)
+f3.write(“%25s”%”SGST(15%)”+”\t”+”%5s”%hi+”\t”+”%10s”%hi+”\ t”+”%10s”%gst)
+f3.write(“\n”) f3.write(“=” * 55) f3.write(“\n”)
+f3.write(“%25s”%”GRAND TOTAL”+”\t”+”%5s”%hi+”\ t”+”%10s”%”INR”+”\t”+”%10s”%gtotal)
+f3.write(“\n”) f3.write(“=” * 55)
+f2.close() f3.close()
+print(“Data Saved”)
 
