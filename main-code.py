@@ -268,16 +268,15 @@ def printing():
                 memdisc = (sumy/20)
                 gtotal = (sumy+(2*gst))-memdisc-inrdeduct
                 add_loyaltypoints()
-gst) gst)
-print (“%25s”%”CGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%
-print (“%25s”%”SGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%
-print (“%25s”%”Total”,”%5s”%hi,”%10s”%hi,”%10s”%float(sumy)) print (“%25s”%”Member Discount”,”%5s”%hi,”%10s”%”-
-”,”%10s”%memdisc)
-print (“%25s”%”Points Earned”,”%5s”%hi,”%10s”%hi,”%10s”%pointsearned)
-print (“%25s”%”Evaluation of Points Used”,”%5s”%hi,”%10s”%”- ”,”%10s”%inrdeduct)
-print (“=” * 55)
-print (“%25s”%”GRAND TOTAL”,”%5s”%hi,”%10s”%”INR”,”%10s”%gtotal)
-print (“=” * 55) f2.close()
+                print (“%25s”%”Total”,”%5s”%hi,”%10s”%hi,”%10s”%float(sumy)) print (“%25s”%”Member Discount”,”%5s”%hi,”%10s”%”-”,”%10s”%memdisc)
+                print (“%25s”%”Points Earned”,”%5s”%hi,”%10s”%hi,”%10s”%pointsearned)
+                print (“%25s”%”Evaluation of Points Used”,”%5s”%hi,”%10s”%”- ”,”%10s”%inrdeduct)
+                print (“%25s”%”CGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%gst)
+                print (“%25s”%”SGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%gst)
+                print (“=” * 55)
+                print (“%25s”%”GRAND TOTAL”,”%5s”%hi,”%10s”%”INR”,”%10s”%gtotal)
+                print (“=” * 55) 
+            f2.close()
 ############### S T O R A G E ( M E M B E R ) ###################
 f3 = open(filenametxt, “a”) f2=open(filename, mode=”r”) x=csv.reader(f2, delimiter=”,”)
 f3.write(“INVOICE \n”)
