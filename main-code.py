@@ -218,33 +218,34 @@ def printing():
             mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
             print("total is" ,sumy) 
             f.close()
-########### L O Y A L T Y ###############
-if memberconfirm == 1: global pdeduct
-pdeduct = 0 global inrdeduct inrdeduct = 0
-try:
-cursor = mydb.cursor()
-sql = “select points from loyaltypoints where membershipid =”+str(memid)+”;”
-StockInDesign: The LAB of InDesign Templates
-
-14
-cursor.execute(sql)
-r=cursor.fetchall()
-print(“Available points “, r[0][0], “which evaluate
-to INR “, r[0][0]*0.4)
-puse = input(“do you want to use your points for
-this transaction y/n”)
-if puse == “y”:
-while pdeduct <= r[0][0]:
-points to be deducted”))
-pdeduct = int(input(“Enter the no. of
-inrdeduct = pdeduct*0.4
-print(pdeduct, “points are being deducted”,
-inrdeduct, “INR reduced”) try:
-mycursor = mydb.cursor()
-sql = “update loyaltypoints set points
-= points-” +str(pdeduct)+ “ where membershipid=”+str(memid)+”;” #print(sql)
-mycursor.execute(sql) print(“Record Updated”) mydb.commit()
-except Exception as e: print(e)
-break except Exception as e:
-print(e)
+            ########### L O Y A L T Y ###############
+            if memberconfirm == 1: 
+                global pdeduct
+                pdeduct = 0 
+                global inrdeduct 
+                inrdeduct = 0
+                try:
+                    cursor = mydb.cursor()
+                    sql = '''select points from loyaltypoints where membershipid ='''+str(memid)+";"
+                    cursor.execute(sql)
+                    r=cursor.fetchall()
+                    print("Available points “, r[0][0], “which evaluateto INR", r[0][0]*0.4)
+                    puse = input("do you want to use your points for this transaction y/n")
+                    if puse == "y":
+                        while pdeduct <= r[0][0]:
+                            pdeduct = int(input("Enter the no. of points to be deducted"))
+                            inrdeduct = pdeduct*0.4
+                            print(pdeduct, "points are being deducted",inrdeduct, "INR reduced") 
+                            try:
+                                mycursor = mydb.cursor()
+                                sql = '''update loyaltypoints set points = points-''' +str(pdeduct)+ '''where membershipid='''+str(memid)+";" 
+                                #print(sql)
+                                mycursor.execute(sql) 
+                                print("Record Updated") 
+                                mydb.commit()
+                            except Exception as e: 
+                                print(e)
+                        break 
+    except Exception as e:
+        print(e)
 
