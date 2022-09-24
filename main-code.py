@@ -56,7 +56,7 @@ val = [
 (53,'Potato Puff','Sides',50),
 (54,'Glazed Strawberry','Sides',50), (55,'Classic Side Salad','Sides',75), (56,'Coleslaw','Sides', 75), 
 (57,'Garlic Bread','Sides',50), (58,'Chargrilled Veggies','Sides',75), 
-(59,'Cheese Sticks','Sides',50), (60,'Hummus Bagel','Sides',100)
+(59,'Cheese Sticks','Sides',50), (60,'Hummus Bagel','Sides',100) ]
 
 
 
@@ -103,18 +103,18 @@ def registerprocess():
 #status: untested
  
 def adddish():
-    print(“Adding a Dish”)
+    print("Adding a Dish")
     im = Image.open(r"#status: will add soon")
     im.show()
     try:
         mycursor = mydb.cursor()
-        v1=input(“Enter DishID”)
-        v2=input(“Enter Qty”)
+        v1=input("Enter DishID")
+        v2=input("Enter Qty")
         sql = '''INSERT INTO billtest VALUES (%s, %s)'''
         l = (v1,v2)
         mycursor.execute(sql,l)
         mydb.commit()
-        print(“Added”)
+        print("Added")
     except Exception as e:
         print(e)
 
@@ -122,7 +122,7 @@ def adddish():
 #status: untested
  
 def modifyqty():
-    print(“Modify Quantity”)
+    print("Modify Quantity")
     try:
         mycursor = mydb.cursor()
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
@@ -186,3 +186,4 @@ def deletedish():
 #status: untested
  
 def printing():
+
