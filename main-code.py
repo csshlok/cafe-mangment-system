@@ -249,18 +249,18 @@ def printing():
                 except Exception as e:
                     print(e)
             ############### P R I N T I N G ( M E M B E R ) ###################
-            f2=open(filename, mode=”r”) 
-            x=csv.reader(f2, delimiter=”,”) 
+            f2=open(filename, mode="r") 
+            x=csv.reader(f2, delimiter=",") 
             global hi
             hi=" " 
-            print (“ “)
-            print (“INVOICE”) 
-            print (“=” * 55) 
+            print (" ")
+            print ("INVOICE") 
+            print ("="* 55) 
             print(datetime_object)
-            print (“%25s”%cust_name, “%5s”%hi, “%10s”%hi,“%10s”%cust_no)
-            print (“=” * 55)
-            print (“%25s”%”Item”, “%5s”%”Qty”, “%10s”%”Rate”,“%10s”%”Total”)
-            print (“=” * 55)
+            print ("%25s"%cust_name, "%5s"%hi, "%10s"%hi,"%10s"%cust_no)
+            print ("=" * 55)
+            print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate","%10s"%"Total")
+            print ("="* 55)
             for i in x:
                 print (“%25s”%i[0],”%5s”%i[1],”%10s”%i[2],”%10s”%i[3])
                 print (“=” * 55)
@@ -276,7 +276,7 @@ def printing():
                 print (“=” * 55)
                 print (“%25s”%”GRAND TOTAL”,”%5s”%hi,”%10s”%”INR”,”%10s”%gtotal)
                 print (“=” * 55) 
-            f2.close()
+                f2.close()
 ############### S T O R A G E ( M E M B E R ) ###################
 f3 = open(filenametxt, “a”) f2=open(filename, mode=”r”) x=csv.reader(f2, delimiter=”,”)
 f3.write(“INVOICE \n”)
