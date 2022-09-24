@@ -1,3 +1,4 @@
+from tkinter import Image
 import mysql.connector
 mydb = mysql.connector.connect(host='localhost', user='root', password='Ggn@0124', database='project')
 import datetime
@@ -88,7 +89,7 @@ def memberverify():
 def registerprocess():
     try:
         mycursor = mydb.cursor()
-        f1=input(:"membershipid")
+        f1=input("membershipid")
         f2=input("name")
         f3=input("dob in yyyy-mm-dd format")
         f4=input("phone number")
@@ -137,7 +138,7 @@ def modifyqty():
             print("QTY",r[t][1])
             t=t+1
             mydb.commit()
-        except Exception as e:
+    except Exception as e:
             print(e)
     modifydishid = int(input("Enter Dish ID"))
     modifyqty = int(input("Enter New Qty"))
@@ -186,4 +187,4 @@ def deletedish():
 #status: untested
  
 def printing():
-
+    
