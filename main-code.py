@@ -262,8 +262,8 @@ def printing():
             print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate","%10s"%"Total")
             print ("="* 55)
             for i in x:
-                print (“%25s”%i[0],”%5s”%i[1],”%10s”%i[2],”%10s”%i[3])
-                print (“=” * 55)
+                print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3])
+                print ("="*55)
                 gst = (sumy/100)*15
                 memdisc = (sumy/20)
                 gtotal = (sumy+(2*gst))-memdisc-inrdeduct
