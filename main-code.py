@@ -144,7 +144,7 @@ def modifyqty():
     modifyqty = int(input("Enter New Qty"))
     try:
         mycursor = mydb.cursor()
-        sql = '''Update billtest set qty=’”+ str(modifyqty) +”’ where dishid='''+ str(modifydishid) +";"
+        sql = '''Update billtest set qty=’"+ str(modifyqty) +"’ where dishid='''+ str(modifydishid) +";"
         #to test by print(sql)
         mycursor.execute(sql)
         print("Record Updated")
@@ -229,7 +229,7 @@ def printing():
                     sql = '''select points from loyaltypoints where membershipid ='''+str(memid)+";"
                     cursor.execute(sql)
                     r=cursor.fetchall()
-                    print("Available points “, r[0][0], “which evaluateto INR", r[0][0]*0.4)
+                    print("Available points ", r[0][0], "which evaluate to INR", r[0][0]*0.4)
                     puse = input("do you want to use your points for this transaction y/n")
                     if puse == "y":
                         while pdeduct <= r[0][0]:
@@ -268,25 +268,29 @@ def printing():
                 memdisc = (sumy/20)
                 gtotal = (sumy+(2*gst))-memdisc-inrdeduct
                 add_loyaltypoints()
-                print (“%25s”%”Total”,”%5s”%hi,”%10s”%hi,”%10s”%float(sumy)) print (“%25s”%”Member Discount”,”%5s”%hi,”%10s”%”-”,”%10s”%memdisc)
-                print (“%25s”%”Points Earned”,”%5s”%hi,”%10s”%hi,”%10s”%pointsearned)
-                print (“%25s”%”Evaluation of Points Used”,”%5s”%hi,”%10s”%”- ”,”%10s”%inrdeduct)
-                print (“%25s”%”CGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%gst)
-                print (“%25s”%”SGST(15%)”,”%5s”%hi,”%10s”%hi,”%10s”%gst)
-                print (“=” * 55)
-                print (“%25s”%”GRAND TOTAL”,”%5s”%hi,”%10s”%”INR”,”%10s”%gtotal)
-                print (“=” * 55) 
+                print ("%25s"%"Total","%5s"%"hi","%10s"%"hi","%10s"%float(sumy)) 
+                print ("%25s"%"Member Discount","%5s"%hi,"%10s"%"-","%10s"%memdisc)
+                print ("%25s"%"Points Earned","%5s"%hi,"%10s"%hi,"%10s"%pointsearned)
+                print ("%25s"%"Evaluation of Points Used","%5s"%hi,"%10s"%"- ","%10s"%inrdeduct)
+                print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst)
+                print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst)
+                print ("=" * 55)
+                print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal)
+                print ("=" * 55) 
                 f2.close()
-############### S T O R A G E ( M E M B E R ) ###################
-f3 = open(filenametxt, “a”) f2=open(filename, mode=”r”) x=csv.reader(f2, delimiter=”,”)
-f3.write(“INVOICE \n”)
-StockInDesign: The LAB of InDesign Templates
-
- 16
-f3.write(“=” * 55) f3.write(“\n”) f3.write(str(datetime_object)) f3.write(“\n”) f3.write(cust_name) f3.write(“\n”) f3.write(cust_no) f3.write(“\n”)
-f3.write(“=” * 55) f3.write(“\n”)
-f3.writelines(“%25s”%”Item””\t””%5s”%”Qty””\ t””%10s”%”Rate””\t””%10s”%”Total”)
-f3.write(“\n”) f3.write(“=” * 55)
+ ############### S T O R A G E ( M E M B E R ) ###################
+f3 = open(#filename, "a") 
+f2=open(#filename, mode="r") 
+x=csv.reader(f2, delimiter=",")
+f3.write("INVOICE \n")
+f3.write("=" * 55) 
+f3.write("\n") 
+f3.write(str(datetime_object)) f3.write("\n") 
+f3.write(cust_name) f3.write("\n") 
+f3.write(cust_no) f3.write("\n")
+f3.write("=" * 55) f3.write("\n")
+f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\ t""%10s"%"Rate""\t""%10s"%"Total")
+f3.write("\n") f3.write("=" * 55)
 final=()
 for i in x:
 global aa
@@ -297,26 +301,27 @@ aa=i[0]
 bb=i[1]
 cc=i[2]
 dd=i[3]
-final = aa+”\t”+bb+”\t”+cc+”\t”+dd f3.write(“\n”)
+final = aa+"\t"+bb+"\t"+cc+"\t"+dd f3.write("\n")
 #print(final)
-f3.write(str(final)) f3.write(“\n”)
-f3.write(“=” * 55)
-f3.write(“\n”) f3.write(“%25s”%”Total”+’\t’+”%5s”%hi+’\t’+”%10s”%hi+’\
-t’+”%10s”%float(sumy)) f3.write(“\n”)
-f3.write(“%25s”%”Member Discount”+”\t”+”%5s”%hi+”\ t”+”%10s”%”-”+”\t”+”%10s”%memdisc)
-f3.write(“\n”)
-f3.write(“%25s”%”Points Earned”+”\t”+”%5s”%hi+”\
-StockInDesign: The LAB of InDesign Templates
-
-17
-t”+”%10s”%hi+”\t”+”%10s”%pointsearned) f3.write(“\n”)
-f3.write(“%25s”%”Evaluation of Points Used”+”\ t”+”%5s”%hi+”\t”+”%10s”%”-”+”\t”+”%10s”%inrdeduct)
-f3.write(“\n”) f3.write(“%25s”%”CGST(15%)”+”\t”+”%5s”%hi+”\t”+”%10s”%hi+”\
-t”+”%10s”%gst) f3.write(“\n”)
-f3.write(“%25s”%”SGST(15%)”+”\t”+”%5s”%hi+”\t”+”%10s”%hi+”\ t”+”%10s”%gst)
-f3.write(“\n”) f3.write(“=” * 55) f3.write(“\n”)
-f3.write(“%25s”%”GRAND TOTAL”+”\t”+”%5s”%hi+”\ t”+”%10s”%”INR”+”\t”+”%10s”%gtotal)
-f3.write(“\n”) f3.write(“=” * 55)
-f2.close() f3.close()
-print(“Data Saved”)
+f3.write(str(final)) f3.write("\n")
+f3.write("=" * 55)
+f3.write("\n") f3.write("%25s"%"Total"+"\t"+"%5s"%"hi"+"\t"+"%10s"%"hi"+"\t"+"%10s"%float(sumy)) 
+f3.write("\n")
+f3.write("%25s"%"Member Discount"+"\t"+"%5s"%"hi"+"\ t"+"%10s"%"-"+"\t"+"%10s"%memdisc)
+f3.write("\n")
+f3.write("%25s"%"Points Earned"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%pointsearned) 
+f3.write("\n")
+f3.write("%25s"%"Evaluation of Points Used"+"\ t"+"%5s"%hi+"\t"+"%10s"%"-"+"\t"+"%10s"%inrdeduct)
+f3.write("\n") f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
+f3.write("\n")
+f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
+f3.write("\n")
+f3.write("=" * 55) 
+f3.write("\n")
+f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
+f3.write("\n") 
+f3.write("=" * 55)
+f2.close() 
+f3.close()
+print("Data Saved")
 
