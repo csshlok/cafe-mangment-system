@@ -544,11 +544,13 @@ def printing():
         f3.write("\n") 
         f3.write("=" * 55) 
         f3.write("\n")
-f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
-f3.write("\n") f3.write("=" * 55)
-f2.close() f3.close()
-print("Data Saved")
- f=open(filename, mode="a")
+        f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
+        f3.write("\n") 
+        f3.write("=" * 55)
+        f2.close() 
+        f3.close()
+        print("Data Saved")
+    f=open(filename, mode="a")
 mywriter = csv.writer(f, delimiter = ",") try:
 cursor = mydb.cursor()
 sql = "select * from menu m, billtest b where
@@ -562,9 +564,6 @@ a = r[i][3]*r[i][5]
 print("total of " + r[i][1] + str(a)) sumyy = sumyy + a
 i=i+1
 dishname = r[i-1][1]
-StockInDesign: The LAB of InDesign Templates
-
- 25
 dishqty = r[i-1][5]
 dishprice = r[i-1][3] dishtotal = dishprice*dishqty
 mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
@@ -584,9 +583,6 @@ gst = (sumyy/100)*15 memdisc = (sumyy/20) gtotal = (sumyy+(2*gst))
 print ("%25s"%"Total","%5s"%hii,"%10s"%hii,"%10s"%float(sumyy)) print ("%25s"%"CGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst) print ("%25s"%"SGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst)
 print ("=" * 55)
 print ("%25s"%"GRAND TOTAL","%5s"%hii,"%10s"%"INR","%10s"%gtotal)
-StockInDesign: The LAB of InDesign Templates
-
- 26
 print ("=" * 55)
 f2.close()
 ############### S T O R A G E ###################
@@ -609,9 +605,6 @@ ddd=i[3]
 final = aaa+"\t"+bbb+"\t"+ccc+"\t"+ddd f3.write("\n")
 #print(final)
 f3.write(str(final)) f3.write("\n")
-StockInDesign: The LAB of InDesign Templates
-
-27
 f3.write("=" * 55) f3.write("\n")
 f3.write("%25s"%"Total"+’\t’+"%5s"%hii+’\t’+"%10s"%hii+’\ t’+"%10s"%float(sumyy))
 f3.write("\n") f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hii+"\t"+"%10s"%hii+"\
