@@ -404,34 +404,47 @@ def printing():
     print("Data saved")
     except Exception as e: 
         print(e)
-#loyalty points addition #status: OPERATIONAL
-def add_loyaltypoints():
-try:
-#membertotal = sumy-(sumy/10)
-#print("The new total for member is", membertotal) global pointsearned
-pointsearned = (sumy/100)*15
-#print("The points loyalty points earned are", pointsearned) pi = pointsearned
-mycursor = mydb.cursor()
-sql = "update loyaltypoints set points = points +"+str(pi)+" where membershipid ="+ str(memid)+";"
-#print(sql) mycursor.execute(sql) print("Points added") mydb.commit()
-except Exception as e: print(e)
-#cancellation #status: OPERATIONAL
-def printbill_cancel():
-print("Cancelling the Bill") datetime_object = datetime.datetime.now() print(datetime_object)
-filename = str(datetime_object)+".csv" filenametxt = str(datetime_object)+".txt" print(filename)
-print("1. Order Delayed") print("2. Bad Food")
-print("3. Unpleasant Service") print("4. Hygiene")
-print("5. Emergency, I gotta go!") print("6. Other")
-cancelchoice = int(input("Please choose a reason to cancel"))
-StockInDesign: The LAB of InDesign Templates
-
- 21
-global cancelreason
-if (cancelchoice <= 4) or (cancelchoice == 6): if cancelchoice == 1:
-cancelreason = input("Please describe your issue")
-print("Really sorry for the delay.") elif cancelchoice == 2:
-cancelreason = input("Please describe your issue")
-print("Really sorry for the bad food.") elif cancelchoice == 3:
+    #loyalty points addition 
+    # #status: OPERATIONAL
+    def add_loyaltypoints():
+        try:
+            #membertotal = sumy-(sumy/10)
+            #print("The new total for member is", membertotal) 
+            global pointsearned
+            pointsearned = (sumy/100)*15
+            print("The points loyalty points earned are", pointsearned) 
+            pi = pointsearned
+            mycursor = mydb.cursor()
+            sql = "update loyaltypoints set points = points +"+str(pi)+" where membershipid ="+ str(memid)+";"
+            print(sql) 
+            mycursor.execute(sql) 
+            print("Points added") 
+            mydb.commit()
+            except Exception as e: 
+                print(e)
+    #cancellation #status: OPERATIONAL
+    def printbill_cancel():
+        print("Cancelling the Bill") 
+        datetime_object = datetime.datetime.now() 
+        print(datetime_object)
+        filename = str(datetime_object)+".csv" 
+        filenametxt = str(datetime_object)+".txt" 
+        print(filename)
+        print("1. Order Delayed") 
+        print("2. Bad Food")
+        print("3. Unpleasant Service") 
+        print("4. Hygiene")
+        print("5. Emergency, I gotta go!") 
+        print("6. Other")
+        cancelchoice = int(input("Please choose a reason to cancel"))
+        global cancelreason
+        if (cancelchoice <= 4) or (cancelchoice == 6): 
+            if cancelchoice == 1:
+                cancelreason = input("Please describe your issue")
+                print("Really sorry for the delay.") 
+            elif cancelchoice == 2:
+                cancelreason = input("Please describe your issue")
+                print("Really sorry for the bad food.") elif cancelchoice == 3:
 cancelreason = input("Please describe your issue")
 print("Really sorry for the unpleasant service.") elif cancelchoice == 4:
 cancelreason = input("Please describe your issue")
@@ -475,9 +488,6 @@ gst = (sumy/100)*15 memdisc = (sumy/20) gtotal = (sumy+(2*gst))
 print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) print ("=" * 55)
 print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) print ("=" * 55)
 f2.close()
-StockInDesign: The LAB of InDesign Templates
-
- 23
 ############### S T O R A G E ###################
 f3 = open(filenametxt, "a") f2=open(filename, mode="r") x=csv.reader(f2, delimiter=",")
 f3.write("INVOICE \n") f3.write("=" * 55) f3.write("\n") f3.write(str(datetime_object)) f3.write("\n") f3.write(cancelreason) f3.write("\n")
