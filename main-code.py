@@ -453,31 +453,31 @@ def printing():
                 print("Really sorry for the poor hygiene") 
             elif cancelchoice == 5:
                 print("We hope everythings alright.")
-        else:       
-            cancelreason = input("Please describe your issue") 
-            print("Registered. Really sorry for the same.")
-    f=open(filename, mode="a")
-    mywriter = csv.writer(f, delimiter = ",")
-    try:
-        cursor = mydb.cursor()
-        sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
-        cursor.execute(sql) r=cursor.fetchall() #print(r)
-        global sumy
-        sumy = 0
-        i=0
-        while i < len(r):
-            a = r[i][3]*r[i][5]
-            print("total of " + r[i][1] + str(a))  
-            sumy = sumy + a
-            i=i+1
-            dishname = r[i-1][1]
-            dishqty = r[i-1][5]
-            dishprice = r[i-1][3]
-            dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
-            print("total is" ,sumy)
-        f.close()
-    except Exception as e:
-        print(e)
+            else:       
+                cancelreason = input("Please describe your issue") 
+                print("Registered. Really sorry for the same.")
+            f=open(filename, mode="a")
+            mywriter = csv.writer(f, delimiter = ",")
+            try:
+                cursor = mydb.cursor()
+                sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
+            cursor.execute(sql) r=cursor.fetchall() #print(r)
+            global sumy
+            sumy = 0
+            i=0
+            while i < len(r):
+                 a = r[i][3]*r[i][5]
+                print("total of " + r[i][1] + str(a))  
+                sumy = sumy + a
+                i=i+1
+                dishname = r[i-1][1]
+                dishqty = r[i-1][5]
+                dishprice = r[i-1][3]
+                dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+                print("total is" ,sumy)
+            f.close()
+            except Exception as e:
+            print(e)
     ############### P R I N T I N G ###################
     f2=open(filename, mode="r") 
     x=csv.reader(f2, delimiter=",") 
