@@ -444,85 +444,111 @@ def printing():
                 print("Really sorry for the delay.") 
             elif cancelchoice == 2:
                 cancelreason = input("Please describe your issue")
-                print("Really sorry for the bad food.") elif cancelchoice == 3:
-cancelreason = input("Please describe your issue")
-print("Really sorry for the unpleasant service.") elif cancelchoice == 4:
-cancelreason = input("Please describe your issue")
-print("Really sorry for the poor hygiene") else:
-cancelreason = input("Please describe your issue") print("Registered. Really sorry for the same.")
-f=open(filename, mode="a")
-mywriter = csv.writer(f, delimiter = ",")
-try:
-cursor = mydb.cursor()
-sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
-cursor.execute(sql) r=cursor.fetchall() #print(r)
-global sumy
-sumy = 0
-i=0
-while i < len(r):
-a = r[i][3]*r[i][5]
-print("total of " + r[i][1] + str(a)) sumy = sumy + a
-i=i+1
-dishname = r[i-1][1]
-dishqty = r[i-1][5]
-dishprice = r[i-1][3]
-StockInDesign: The LAB of InDesign Templates
-
- 22
-dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
-print("total is" ,sumy)
-f.close()
-except Exception as e:
-print(e)
-############### P R I N T I N G ###################
-f2=open(filename, mode="r") x=csv.reader(f2, delimiter=",") global hi
-hi=" "
-print (" ")
-print ("INVOICE - CANCELLED") print ("=" * 55) print(datetime_object)
-print (cancelreason)
-print ("=" * 55)
-print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
-print ("=" * 55) for i in x:
-print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) print ("=" * 55)
-gst = (sumy/100)*15 memdisc = (sumy/20) gtotal = (sumy+(2*gst))
-print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) print ("=" * 55)
-print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) print ("=" * 55)
-f2.close()
-############### S T O R A G E ###################
-f3 = open(filenametxt, "a") f2=open(filename, mode="r") x=csv.reader(f2, delimiter=",")
-f3.write("INVOICE \n") f3.write("=" * 55) f3.write("\n") f3.write(str(datetime_object)) f3.write("\n") f3.write(cancelreason) f3.write("\n")
-f3.write("=" * 55)
-f3.write("\n") f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\
-t""%10s"%"Total") f3.write("\n")
-f3.write("=" * 55)
-final=()
-for i in x:
-global aa
-global bb
-global cc
-global dd
-aa=i[0]
-bb=i[1]
-cc=i[2]
-dd=i[3]
-final = aa+"\t"+bb+"\t"+cc+"\t"+dd f3.write("\n")
-#print(final)
-f3.write(str(final)) f3.write("\n")
-f3.write("=" * 55) f3.write("\n")
-f3.write("%25s"%"Total"+’\t’+"%5s"%hi+’\t’+"%10s"%hi+’\ t’+"%10s"%float(sumy))
-StockInDesign: The LAB of InDesign Templates
-
- 24
-f3.write("\n") f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\
-t"+"%10s"%gst) f3.write("\n")
-f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
-f3.write("\n") f3.write("=" * 55) f3.write("\n")
+                print("Really sorry for the bad food.") 
+            elif cancelchoice == 3:
+                cancelreason = input("Please describe your issue")
+                print("Really sorry for the unpleasant service.") 
+            elif cancelchoice == 4:
+                cancelreason = input("Please describe your issue")
+                print("Really sorry for the poor hygiene") 
+            elif cancelchoice == 5:
+                print("We hope everythings alright.")
+        else:       
+            cancelreason = input("Please describe your issue") 
+            print("Registered. Really sorry for the same.")
+    f=open(filename, mode="a")
+    mywriter = csv.writer(f, delimiter = ",")
+    try:
+        cursor = mydb.cursor()
+        sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
+        cursor.execute(sql) r=cursor.fetchall() #print(r)
+        global sumy
+        sumy = 0
+        i=0
+        while i < len(r):
+            a = r[i][3]*r[i][5]
+            print("total of " + r[i][1] + str(a))  
+            sumy = sumy + a
+            i=i+1
+            dishname = r[i-1][1]
+            dishqty = r[i-1][5]
+            dishprice = r[i-1][3]
+            dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+            print("total is" ,sumy)
+        f.close()
+    except Exception as e:
+        print(e)
+    ############### P R I N T I N G ###################
+    f2=open(filename, mode="r") 
+    x=csv.reader(f2, delimiter=",") 
+    global hi
+    hi=" "
+    print (" ")
+    print ("INVOICE - CANCELLED") 
+    print ("=" * 55) 
+    print(datetime_object)
+    print (cancelreason)
+    print ("=" * 55)
+    print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
+    print ("=" * 55) 
+    for i in x:
+        print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
+        print ("=" * 55)
+        gst = (sumy/100)*15 
+        memdisc = (sumy/20) 
+        gtotal = (sumy+(2*gst))
+        print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) 
+        print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
+        print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
+        print ("=" * 55)
+        print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) 
+        print ("=" * 55)
+    f2.close()
+    ############### S T O R A G E ###################
+    f3 = open(filenametxt, "a") 
+    f2=open(filename, mode="r") 
+    x=csv.reader(f2, delimiter=",")
+    f3.write("INVOICE \n") 
+    f3.write("=" * 55) 
+    f3.write("\n") 
+    f3.write(str(datetime_object)) 
+    f3.write("\n") 
+    f3.write(cancelreason) 
+    f3.write("\n")
+    f3.write("=" * 55)
+    f3.write("\n") 
+    f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total") 
+    f3.write("\n")
+    f3.write("=" * 55)
+    final=()
+    for i in x:
+        global aa
+        global bb
+        global cc
+        global dd
+        aa=i[0]
+        bb=i[1]
+        cc=i[2]
+        dd=i[3]
+        final = aa+"\t"+bb+"\t"+cc+"\t"+dd 
+        f3.write("\n")
+        print(final)
+        f3.write(str(final)) 
+        f3.write("\n")
+        f3.write("=" * 55) 
+        f3.write("\n")
+        f3.write("%25s"%"Total"+'\t'+"%5s"%hi+'\t'+"%10s"%hi+'\t'+"%10s"%float(sumy))
+        f3.write("\n") 
+        f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) f3.write("\n")
+        f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
+        f3.write("\n") 
+        f3.write("=" * 55) 
+        f3.write("\n")
 f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
 f3.write("\n") f3.write("=" * 55)
 f2.close() f3.close()
 print("Data Saved")
-elif cancelchoice == 5:
-print("We hope everythings alright.") f=open(filename, mode="a")
+ f=open(filename, mode="a")
 mywriter = csv.writer(f, delimiter = ",") try:
 cursor = mydb.cursor()
 sql = "select * from menu m, billtest b where
