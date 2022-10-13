@@ -575,26 +575,36 @@ for i in x:
             mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
     except Exception as e: 
         print(e)
-    print("total is" ,sumyy) f.close()
-############### P R I N T I N G ###################
-f2=open(filename, mode="r") x=csv.reader(f2, delimiter=",") global hii
-hii=" "
-print (" ")
-print ("INVOICE - CANCELLED") print ("=" * 55) print(datetime_object)
-print ("Emergency")
-print ("=" * 55)
-print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
-print ("=" * 55) for i in x:
-print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) print ("=" * 55)
-gst = (sumyy/100)*15 memdisc = (sumyy/20) gtotal = (sumyy+(2*gst))
-print ("%25s"%"Total","%5s"%hii,"%10s"%hii,"%10s"%float(sumyy)) print ("%25s"%"CGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst) print ("%25s"%"SGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst)
-print ("=" * 55)
-print ("%25s"%"GRAND TOTAL","%5s"%hii,"%10s"%"INR","%10s"%gtotal)
-print ("=" * 55)
-f2.close()
-############### S T O R A G E ###################
-f3 = open(filenametxt, "a") f2=open(filename, mode="r") x=csv.reader(f2, delimiter=",")
-f3.write("INVOICE \n") f3.write("=" * 55) f3.write("\n") f3.write(str(datetime_object)) f3.write("\n") f3.write("Emergency") f3.write("\n")
+    print("total is" ,sumyy) 
+    f.close()
+    ############### P R I N T I N G ###################
+    f2=open(filename, mode="r") 
+    x=csv.reader(f2, delimiter=",") 
+    global hii
+    hii=" "
+    print (" ")
+    print ("INVOICE - CANCELLED") 
+    print ("=" * 55) 
+    print(datetime_object)
+    print ("Emergency")
+    print ("=" * 55)
+    print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
+    print ("=" * 55) 
+    for i in x:
+        print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) print ("=" * 55)
+        gst = (sumyy/100)*15 memdisc = (sumyy/20) gtotal = (sumyy+(2*gst))
+        print ("%25s"%"Total","%5s"%hii,"%10s"%hii,"%10s"%float(sumyy)) 
+        print ("%25s"%"CGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst) 
+        print ("%25s"%"SGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst)
+        print ("=" * 55)
+        print ("%25s"%"GRAND TOTAL","%5s"%hii,"%10s"%"INR","%10s"%gtotal)
+        print ("=" * 55)
+        f2.close()
+        ############### S T O R A G E ###################
+        f3 = open(filenametxt, "a")
+        f2=open(filename, mode="r")
+        x=csv.reader(f2, delimiter=",")
+        f3.write("INVOICE \n") f3.write("=" * 55) f3.write("\n") f3.write(str(datetime_object)) f3.write("\n") f3.write("Emergency") f3.write("\n")
 f3.write("=" * 55)
 f3.write("\n") f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\
 t""%10s"%"Total") f3.write("\n")
