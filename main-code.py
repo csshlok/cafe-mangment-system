@@ -422,7 +422,8 @@ def printing():
             mydb.commit()
             except Exception as e: 
                 print(e)
-    #cancellation #status: OPERATIONAL
+    #cancellation 
+    #status: OPERATIONAL
     def printbill_cancel():
         print("Cancelling the Bill") 
         datetime_object = datetime.datetime.now() 
