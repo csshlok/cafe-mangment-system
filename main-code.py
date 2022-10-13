@@ -404,106 +404,106 @@ def printing():
                         print("Data saved")
     except Exception as e: 
         print(e)
-    #loyalty points addition 
-    #status: untested
-    def add_loyaltypoints():
+#loyalty points addition 
+#status: untested
+def add_loyaltypoints():
+    try:
+        #membertotal = sumy-(sumy/10)
+        #print("The new total for member is", membertotal) 
+        global pointsearned
+        pointsearned = (sumy/100)*15
+        print("The points loyalty points earned are", pointsearned) 
+        pi = pointsearned
+        mycursor = mydb.cursor()
+        sql = "update loyaltypoints set points = points +"+str(pi)+" where membershipid ="+ str(memid)+";"
+        print(sql) 
+        mycursor.execute(sql) 
+        print("Points added") 
+        mydb.commit()
+    except Exception as e: 
+        print(e)
+#cancellation 
+#status: OPERATIONAL
+def printbill_cancel():
+    print("Cancelling the Bill") 
+    datetime_object = datetime.datetime.now() 
+    print(datetime_object)
+    filename = str(datetime_object)+".csv" 
+    filenametxt = str(datetime_object)+".txt" 
+    print(filename)
+    print("1. Order Delayed") 
+    print("2. Bad Food")
+    print("3. Unpleasant Service") 
+    print("4. Hygiene")
+    print("5. Emergency, I gotta go!") 
+    print("6. Other")
+    cancelchoice = int(input("Please choose a reason to cancel"))
+    global cancelreason
+    if (cancelchoice <= 4) or (cancelchoice == 6): 
+        if cancelchoice == 1:
+            cancelreason = input("Please describe your issue")
+            print("Really sorry for the delay.") 
+        elif cancelchoice == 2:
+            cancelreason = input("Please describe your issue")
+            print("Really sorry for the bad food.") 
+        elif cancelchoice == 3:
+            cancelreason = input("Please describe your issue")
+            print("Really sorry for the unpleasant service.") 
+        elif cancelchoice == 4:
+            cancelreason = input("Please describe your issue")
+            print("Really sorry for the poor hygiene") 
+        elif cancelchoice == 5:
+            print("We hope everythings alright.")
+    else:       
+        cancelreason = input("Please describe your issue") 
+        print("Registered. Really sorry for the same.")
+        f=open(filename, mode="a")
+        mywriter = csv.writer(f, delimiter = ",")
         try:
-            #membertotal = sumy-(sumy/10)
-            #print("The new total for member is", membertotal) 
-            global pointsearned
-            pointsearned = (sumy/100)*15
-            print("The points loyalty points earned are", pointsearned) 
-            pi = pointsearned
-            mycursor = mydb.cursor()
-            sql = "update loyaltypoints set points = points +"+str(pi)+" where membershipid ="+ str(memid)+";"
-            print(sql) 
-            mycursor.execute(sql) 
-            print("Points added") 
-            mydb.commit()
-            except Exception as e: 
-                print(e)
-    #cancellation 
-    #status: OPERATIONAL
-    def printbill_cancel():
-        print("Cancelling the Bill") 
-        datetime_object = datetime.datetime.now() 
-        print(datetime_object)
-        filename = str(datetime_object)+".csv" 
-        filenametxt = str(datetime_object)+".txt" 
-        print(filename)
-        print("1. Order Delayed") 
-        print("2. Bad Food")
-        print("3. Unpleasant Service") 
-        print("4. Hygiene")
-        print("5. Emergency, I gotta go!") 
-        print("6. Other")
-        cancelchoice = int(input("Please choose a reason to cancel"))
-        global cancelreason
-        if (cancelchoice <= 4) or (cancelchoice == 6): 
-            if cancelchoice == 1:
-                cancelreason = input("Please describe your issue")
-                print("Really sorry for the delay.") 
-            elif cancelchoice == 2:
-                cancelreason = input("Please describe your issue")
-                print("Really sorry for the bad food.") 
-            elif cancelchoice == 3:
-                cancelreason = input("Please describe your issue")
-                print("Really sorry for the unpleasant service.") 
-            elif cancelchoice == 4:
-                cancelreason = input("Please describe your issue")
-                print("Really sorry for the poor hygiene") 
-            elif cancelchoice == 5:
-                print("We hope everythings alright.")
-            else:       
-                cancelreason = input("Please describe your issue") 
-                print("Registered. Really sorry for the same.")
-            f=open(filename, mode="a")
-            mywriter = csv.writer(f, delimiter = ",")
-            try:
-                cursor = mydb.cursor()
-                sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
+            cursor = mydb.cursor()
+            sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
             cursor.execute(sql) r=cursor.fetchall() #print(r)
             global sumy
             sumy = 0
             i=0
             while i < len(r):
                  a = r[i][3]*r[i][5]
-                print("total of " + r[i][1] + str(a))  
-                sumy = sumy + a
-                i=i+1
-                dishname = r[i-1][1]
-                dishqty = r[i-1][5]
-                dishprice = r[i-1][3]
-                dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
-                print("total is" ,sumy)
-            f.close()
-            except Exception as e:
+                 print("total of " + r[i][1] + str(a))  
+                 sumy = sumy + a
+                 i=i+1
+                 dishname = r[i-1][1]
+                 dishqty = r[i-1][5]
+                 dishprice = r[i-1][3]
+                 dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+                 print("total is" ,sumy)
+                 f.close()
+        except Exception as e:
             print(e)
-    ############### P R I N T I N G ###################
-    f2=open(filename, mode="r") 
-    x=csv.reader(f2, delimiter=",") 
-    global hi
-    hi=" "
-    print (" ")
-    print ("INVOICE - CANCELLED") 
-    print ("=" * 55) 
-    print(datetime_object)
-    print (cancelreason)
+############### P R I N T I N G ###################
+f2=open(filename, mode="r") 
+x=csv.reader(f2, delimiter=",") 
+global hi
+hi=" "
+print (" ")
+print ("INVOICE - CANCELLED") 
+print ("=" * 55) 
+print(datetime_object)
+print (cancelreason)
+print ("=" * 55)
+print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
+print ("=" * 55) 
+for i in x:
+    print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
     print ("=" * 55)
-    print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
-    print ("=" * 55) 
-    for i in x:
-        print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
-        print ("=" * 55)
-        gst = (sumy/100)*15 
-        memdisc = (sumy/20) 
-        gtotal = (sumy+(2*gst))
-        print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) 
-        print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
-        print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
-        print ("=" * 55)
-        print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) 
-        print ("=" * 55)
+    gst = (sumy/100)*15 
+    memdisc = (sumy/20) 
+    gtotal = (sumy+(2*gst))
+    print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) 
+    print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
+    print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
+    print ("=" * 55)
+    print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) 
+    print ("=" * 55)
     f2.close()
     ############### S T O R A G E ###################
     f3 = open(filenametxt, "a") 
@@ -551,25 +551,31 @@ def printing():
         f2.close() 
         f3.close()
         print("Data Saved")
-    f=open(filename, mode="a")
-mywriter = csv.writer(f, delimiter = ",") try:
-cursor = mydb.cursor()
-sql = "select * from menu m, billtest b where
-m.dishid=b.dishid;" cursor.execute(sql)
-r=cursor.fetchall() #print(r)
-global sumyy
-sumyy = 0
-i=0
-while i < len(r):
-a = r[i][3]*r[i][5]
-print("total of " + r[i][1] + str(a)) sumyy = sumyy + a
-i=i+1
-dishname = r[i-1][1]
-dishqty = r[i-1][5]
-dishprice = r[i-1][3] dishtotal = dishprice*dishqty
-mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
-except Exception as e: print(e)
-print("total is" ,sumyy) f.close()
+    elif cancelchoice == 5:
+        print("We hope everythings alright.")
+        pen(filename, mode="a")
+        mywriter = csv.writer(f, delimiter = ",")
+    try:
+        cursor = mydb.cursor()
+        sql = '''select * from menu m, billtest b where m.dishid=b.dishid;''' 
+        cursor.execute(sql)
+        r=cursor.fetchall() #print(r)
+        global sumyy
+        sumyy = 0
+        i=0
+        while i < len(r):
+            a = r[i][3]*r[i][5]
+            print("total of " + r[i][1] + str(a)) 
+            sumyy = sumyy + a
+            i=i+1
+            dishname = r[i-1][1]
+            dishqty = r[i-1][5]
+            dishprice = r[i-1][3] 
+            dishtotal = dishprice*dishqty
+            mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+    except Exception as e: 
+        print(e)
+    print("total is" ,sumyy) f.close()
 ############### P R I N T I N G ###################
 f2=open(filename, mode="r") x=csv.reader(f2, delimiter=",") global hii
 hii=" "
