@@ -683,63 +683,63 @@ def truncate():
 #check loyalty points
 #status: untested
         
-    def knowloyaltypoints():
-        try:
-            cursor = mydb.cursor()
-            sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
-            cursor.execute(sql)
-            r=cursor.fetchall()
-            #print(r)
-            mempoints = r[0][5]
-            print("The total points you have available are", mempoints)
-            evaluation = (mempoints*0.4)
-            print("The total points are worth”, evaluation")
-        except Exception as e:
-            print(e)
+def knowloyaltypoints():
+    try:
+        cursor = mydb.cursor()
+        sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
+        cursor.execute(sql)
+        r=cursor.fetchall()
+        #print(r)
+        mempoints = r[0][5]
+        print("The total points you have available are", mempoints)
+        evaluation = (mempoints*0.4)
+        print("The total points are worth”, evaluation")
+    except Exception as e:
+        print(e)
 #running code
 #status: untested
-    def coderun():
-        global memberconfirm
-        membercheck = int(input("Hi, do you have a membership? Y/N ")) 
-        if membercheck == "Y" or membercheck == "y":
-            memberverify()
+def coderun():
+    global memberconfirm
+    membercheck = int(input("Hi, do you have a membership? Y/N ")) 
+    if membercheck == "Y" or membercheck == "y":
+        memberverify()
+    else:
+        registermem = int(input("Enter 1 to register, Enter 0 to continue without membership "))
+        if registermem == 1:
+            registerprocess()
+            memberconfirm = 0
         else:
-            registermem = int(input("Enter 1 to register, Enter 0 to continue without membership "))
-            if registermem == 1:
-                registerprocess()
-                memberconfirm = 0
-            else:
-                print("Continuing without membership")
-                memberconfirm = 0
-        coderunn = 1
-        while coderunn == 1:
-            print("Please choose an option from the following...")
-            print(" ")
-            print("1. Add Dish")
-            print("2. Modify Qty")
-            print("3. Delete Dish")
-            print("4. Print Bill")
-            print("5. Cancel Order")
-            print("6. Know your loyalty points")
-            print(" ")
-            option = int(input("Enter your choice:"))
-            if option == 1:
-                adddish()
-            elif option == 2:
-                modifyqty()
-            elif option == 3:
-                deletedish()
-            elif option == 4:
-                printing()
-                truncate()
-            elif option == 5:
-                printbill_cancel()
-                truncate()
-            elif option == 6:
-                knowloyaltypoints()
-            else:
-                print("Invalid entry")
-            new = int(input("Press 1 to continue, 0 to exit"))
-            new = coderunn
+            print("Continuing without membership")
+            memberconfirm = 0
+    coderunn = 1
+    while coderunn == 1:
+        print("Please choose an option from the following...")
+        print(" ")
+        print("1. Add Dish")
+        print("2. Modify Qty")
+        print("3. Delete Dish")
+        print("4. Print Bill")
+        print("5. Cancel Order")
+        print("6. Know your loyalty points")
+        print(" ")
+        option = int(input("Enter your choice:"))
+        if option == 1:
+            adddish()
+        elif option == 2:
+            modifyqty()
+        elif option == 3:
+            deletedish()
+        elif option == 4:
+            printing()
+            truncate()
+        elif option == 5:
+            printbill_cancel()
+            truncate()
+        elif option == 6:
+            knowloyaltypoints()
+        else:
+            print("Invalid entry")
+        new = int(input("Press 1 to continue, 0 to exit"))
+        new = coderunn
 
-    coderun()
+coderun()
