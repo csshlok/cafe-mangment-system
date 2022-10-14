@@ -339,9 +339,9 @@ def printing():
                     f2.close() 
                     f3.close()
                     print("Data Saved")
-                    
-             ############### P R I N T I N G ( N O N - M E M B E R ) ###################
-             else:
+
+            ############### P R I N T I N G ( N O N - M E M B E R ) ###################
+            else:
                 f2=open(filename, mode="r") 
                 x=csv.reader(f2, delimiter=",")
                 print (" ")
@@ -397,22 +397,22 @@ def printing():
                         #print(final)
                         f3.write(str(final)) 
                         f3.write("\n")
-                        f3.write("=" * 55)
-                        f3.write("\n") 
-                        f3.write("%25s"%"Total"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%float(sumy)) 
-                        f3.write("\n")
-                        f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
-                        f3.write("\n") 
-                        f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
-                        f3.write("\n")
-                        f3.write("=" * 55) 
-                        f3.write("\n")
-                        f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
-                        f3.write("\n") 
-                        f3.write("=" * 55)
-                        f2.close() 
-                        f3.close()
-                        print("Data saved")
+                    f3.write("=" * 55)
+                    f3.write("\n") 
+                    f3.write("%25s"%"Total"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%float(sumy)) 
+                    f3.write("\n")
+                    f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
+                    f3.write("\n") 
+                    f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
+                    f3.write("\n")
+                    f3.write("=" * 55) 
+                    f3.write("\n")
+                    f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
+                    f3.write("\n") 
+                    f3.write("=" * 55)
+                    f2.close() 
+                    f3.close()
+                    print("Data saved")
     except Exception as e: 
         print(e)
 #loyalty points addition 
