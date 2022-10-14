@@ -434,7 +434,7 @@ def add_loyaltypoints():
     except Exception as e: 
         print(e)
 #cancellation 
-#status: OPERATIONAL
+#status: untested
 def printbill_cancel():
     print("Cancelling the Bill") 
     datetime_object = datetime.datetime.now() 
@@ -463,11 +463,9 @@ def printbill_cancel():
         elif cancelchoice == 4:
             cancelreason = input("Please describe your issue")
             print("Really sorry for the poor hygiene") 
-        elif cancelchoice == 5:
-            print("We hope everythings alright.")
-    else:       
-        cancelreason = input("Please describe your issue") 
-        print("Registered. Really sorry for the same.")
+        else:       
+            cancelreason = input("Please describe your issue") 
+            print("Registered. Really sorry for the same.")
         f=open(filename, mode="a")
         mywriter = csv.writer(f, delimiter = ",")
         try:
@@ -490,63 +488,63 @@ def printbill_cancel():
                  f.close()
         except Exception as e:
             print(e)
-############### P R I N T I N G ###################
-f2=open(filename, mode="r") 
-x=csv.reader(f2, delimiter=",") 
-global hi
-hi=" "
-print (" ")
-print ("INVOICE - CANCELLED") 
-print ("=" * 55) 
-print(datetime_object)
-print (cancelreason)
-print ("=" * 55)
-print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
-print ("=" * 55) 
-for i in x:
-    print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
-    print ("=" * 55)
-    gst = (sumy/100)*15 
-    memdisc = (sumy/20) 
-    gtotal = (sumy+(2*gst))
-    print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) 
-    print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
-    print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
-    print ("=" * 55)
-    print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) 
-    print ("=" * 55)
-    f2.close()
-    ############### S T O R A G E ###################
-    f3 = open(filenametxt, "a") 
-    f2=open(filename, mode="r") 
-    x=csv.reader(f2, delimiter=",")
-    f3.write("INVOICE \n") 
-    f3.write("=" * 55) 
-    f3.write("\n") 
-    f3.write(str(datetime_object)) 
-    f3.write("\n") 
-    f3.write(cancelreason) 
-    f3.write("\n")
-    f3.write("=" * 55)
-    f3.write("\n") 
-    f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total") 
-    f3.write("\n")
-    f3.write("=" * 55)
-    final=()
-    for i in x:
-        global aa
-        global bb
-        global cc
-        global dd
-        aa=i[0]
-        bb=i[1]
-        cc=i[2]
-        dd=i[3]
-        final = aa+"\t"+bb+"\t"+cc+"\t"+dd 
+        ############### P R I N T I N G ###################
+        f2=open(filename, mode="r") 
+        x=csv.reader(f2, delimiter=",") 
+        global hi
+        hi=" "
+        print (" ")
+        print ("INVOICE - CANCELLED") 
+        print ("=" * 55) 
+        print(datetime_object)
+        print (cancelreason)
+        print ("=" * 55)
+        print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
+        print ("=" * 55) 
+        for i in x:
+            print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
+        print ("=" * 55)
+        gst = (sumy/100)*15 
+        memdisc = (sumy/20) 
+        gtotal = (sumy+(2*gst))
+        print ("%25s"%"Total","%5s"%hi,"%10s"%hi,"%10s"%float(sumy)) 
+        print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
+        print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst) 
+        print ("=" * 55)
+        print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal) 
+        print ("=" * 55)
+        f2.close()
+        ############### S T O R A G E ###################
+        f3 = open(filenametxt, "a") 
+        f2=open(filename, mode="r") 
+        x=csv.reader(f2, delimiter=",")
+        f3.write("INVOICE \n") 
+        f3.write("=" * 55) 
+        f3.write("\n") 
+        f3.write(str(datetime_object)) 
+        f3.write("\n") 
+        f3.write(cancelreason) 
         f3.write("\n")
-        print(final)
-        f3.write(str(final)) 
+        f3.write("=" * 55)
+        f3.write("\n") 
+        f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total") 
         f3.write("\n")
+        f3.write("=" * 55)
+        final=()
+        for i in x:
+            global aa
+            global bb
+            global cc
+            global dd
+            aa=i[0]
+            bb=i[1]
+            cc=i[2]
+            dd=i[3]
+            final = aa+"\t"+bb+"\t"+cc+"\t"+dd 
+            f3.write("\n")
+            #print(final)
+            f3.write(str(final)) 
+            f3.write("\n")
         f3.write("=" * 55) 
         f3.write("\n")
         f3.write("%25s"%"Total"+'\t'+"%5s"%hi+'\t'+"%10s"%hi+'\t'+"%10s"%float(sumy))
