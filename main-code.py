@@ -287,58 +287,59 @@ def printing():
                     print ("=" * 55)
                     print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal)
                     print ("=" * 55) 
-                f2.close()
-             ############### S T O R A G E ( M E M B E R ) ###################
-            f3 = open(#filename, "a") 
-            f2=open(#filename, mode="r")
-            x=csv.reader(f2, delimiter=",")
-            f3.write("INVOICE \n")
-            f3.write("=" * 55) 
-            f3.write("\n") 
-            f3.write(str(datetime_object)) f3.write("\n") 
-            f3.write(cust_name) f3.write("\n") 
-            f3.write(cust_no) f3.write("\n")
-            f3.write("=" * 55) f3.write("\n")
-            f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total")
-            f3.write("\n") 
-            f3.write("=" * 55)
-            final=()
-            for i in x:
-                global aa
-                global bb
-                global cc
-                global dd
-                aa=i[0]
-                bb=i[1]
-                cc=i[2]
-                dd=i[3]
-                final = aa+"\t"+bb+"\t"+cc+"\t"+dd 
-                f3.write("\n")
-                #print(final)
-                f3.write(str(final)) 
-                f3.write("\n")
-                f3.write("=" * 55)
-                f3.write("\n") 
-                f3.write("%25s"%"Total"+"\t"+"%5s"%"hi"+"\t"+"%10s"%"hi"+"\t"+"%10s"%float(sumy)) 
-                f3.write("\n")
-                f3.write("%25s"%"Member Discount"+"\t"+"%5s"%"hi"+"\ t"+"%10s"%"-"+"\t"+"%10s"%memdisc)
-                f3.write("\n")
-                f3.write("%25s"%"Points Earned"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%pointsearned) 
-                f3.write("\n")
-                f3.write("%25s"%"Evaluation of Points Used"+"\ t"+"%5s"%hi+"\t"+"%10s"%"-"+"\t"+"%10s"%inrdeduct)
-                f3.write("\n") 
-                f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
-                f3.write("\n")
-                f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
-                f3.write("\n")
-                f3.write("=" * 55) 
-                f3.write("\n")
-                f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
-                f3.write("\n") 
-                f3.write("=" * 55)
-                f2.close() 
-                f3.close()
-                print("Data Saved")
+                    f2.close()
+                    ############### S T O R A G E ( M E M B E R ) ###################
+                    f3 =open(#filename, "a") 
+                    f2=open(#filename, mode="r")
+                    x=csv.reader(f2, delimiter=",")
+                    f3.write("INVOICE \n")
+                    f3.write("=" * 55) 
+                    f3.write("\n") 
+                    f3.write(str(datetime_object)) f3.write("\n") 
+                    f3.write(cust_name) f3.write("\n") 
+                    f3.write(cust_no) f3.write("\n")
+                    f3.write("=" * 55) f3.write("\n")
+                    f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total")
+                    f3.write("\n") 
+                    f3.write("=" * 55)
+                    final=()
+                    for i in x:
+                        global aa
+                        global bb
+                        global cc
+                        global dd
+                        aa=i[0]
+                        bb=i[1]
+                        cc=i[2]
+                        dd=i[3]
+                        final = aa+"\t"+bb+"\t"+cc+"\t"+dd 
+                        f3.write("\n")
+                        #print(final)
+                        f3.write(str(final)) 
+                        f3.write("\n")
+                    f3.write("=" * 55)
+                    f3.write("\n") 
+                    f3.write("%25s"%"Total"+"\t"+"%5s"%"hi"+"\t"+"%10s"%"hi"+"\t"+"%10s"%float(sumy)) 
+                    f3.write("\n")
+                    f3.write("%25s"%"Member Discount"+"\t"+"%5s"%"hi"+"\ t"+"%10s"%"-"+"\t"+"%10s"%memdisc)
+                    f3.write("\n")
+                    f3.write("%25s"%"Points Earned"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%pointsearned) 
+                    f3.write("\n")
+                    f3.write("%25s"%"Evaluation of Points Used"+"\ t"+"%5s"%hi+"\t"+"%10s"%"-"+"\t"+"%10s"%inrdeduct)
+                    f3.write("\n") 
+                    f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
+                    f3.write("\n")
+                    f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\ t"+"%10s"%gst)
+                    f3.write("\n")
+                    f3.write("=" * 55) 
+                    f3.write("\n")
+                    f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
+                    f3.write("\n") 
+                    f3.write("=" * 55)
+                    f2.close() 
+                    f3.close()
+                    print("Data Saved")
+                    
              ############### P R I N T I N G ( N O N - M E M B E R ) ###################
              else:
                 f2=open(filename, mode="r") 
