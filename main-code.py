@@ -289,16 +289,20 @@ def printing():
                 print ("=" * 55) 
                 f2.close()
                     ############### S T O R A G E ( M E M B E R ) ###################
-                f3 =open(#filename, "a") 
-                f2=open(#filename, mode="r")
+                f3 =open(filename, "a") 
+                f2=open(filename, mode="r")
                 x=csv.reader(f2, delimiter=",")
                 f3.write("INVOICE \n")
                 f3.write("=" * 55) 
                 f3.write("\n") 
-                f3.write(str(datetime_object)) f3.write("\n") 
-                f3.write(cust_name) f3.write("\n") 
-                f3.write(cust_no) f3.write("\n")
-                f3.write("=" * 55) f3.write("\n")
+                f3.write(str(datetime_object)) 
+                f3.write("\n") 
+                f3.write(cust_name) 
+                f3.write("\n") 
+                f3.write(cust_no) 
+                f3.write("\n")
+                f3.write("=" * 55) 
+                f3.write("\n")
                 f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total")
                 f3.write("\n") 
                 f3.write("=" * 55)
@@ -365,53 +369,53 @@ def printing():
                 print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%hi,"%10s"%gtotal)
                 print ("=" * 55)
                 f2.close()
-                    ############### S T O R A G E ( N O N - M E M B E R ) ###################
-                    f3 = open(filenametxt, "a") 
-                    f2=open(filename, mode="r") 
-                    x=csv.reader(f2, delimiter=",")
-                    f3.write("INVOICE \n") 
-                    f3.write("=" * 55) 
-                    f3.write("\n") 
-                    f3.write(str(datetime_object)) 
+                ############### S T O R A G E ( N O N - M E M B E R ) ###################
+                f3 = open(filenametxt, "a") 
+                f2=open(filename, mode="r") 
+                x=csv.reader(f2, delimiter=",")
+                f3.write("INVOICE \n") 
+                f3.write("=" * 55) 
+                f3.write("\n") 
+                f3.write(str(datetime_object)) 
+                f3.write("\n")
+                f3.write("Open Order") 
+                f3.write("\n") 
+                f3.write("=" * 55) 
+                f3.write("\n")
+                f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total")
+                f3.write("\n") 
+                f3.write("=" * 55)
+                final=()
+                for i in x:
+                    global aaa
+                    global bbb
+                    global ccc
+                    global ddd
+                    aaa=i[0]
+                    bbb=i[1]
+                    ccc=i[2]
+                    ddd=i[3]
+                    final = aaa+"\t"+bbb+"\t"+ccc+"\t"+ddd 
                     f3.write("\n")
-                    f3.write("Open Order") 
-                    f3.write("\n") 
-                    f3.write("=" * 55) 
+                    #print(final)
+                    f3.write(str(final)) 
                     f3.write("\n")
-                    f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total")
-                    f3.write("\n") 
-                    f3.write("=" * 55)
-                    final=()
-                    for i in x:
-                        global aaa
-                        global bbb
-                        global ccc
-                        global ddd
-                        aaa=i[0]
-                        bbb=i[1]
-                        ccc=i[2]
-                        ddd=i[3]
-                        final = aaa+"\t"+bbb+"\t"+ccc+"\t"+ddd 
-                        f3.write("\n")
-                        #print(final)
-                        f3.write(str(final)) 
-                        f3.write("\n")
-                    f3.write("=" * 55)
-                    f3.write("\n") 
-                    f3.write("%25s"%"Total"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%float(sumy)) 
-                    f3.write("\n")
-                    f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst)
-                    f3.write("\n") 
-                    f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
-                    f3.write("\n")
-                    f3.write("=" * 55) 
-                    f3.write("\n")
-                    f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
-                    f3.write("\n") 
-                    f3.write("=" * 55)
-                    f2.close() 
-                    f3.close()
-                    print("Data saved")
+                f3.write("=" * 55)
+                f3.write("\n") 
+                f3.write("%25s"%"Total"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%float(sumy)) 
+                f3.write("\n")
+                f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst)
+                f3.write("\n") 
+                f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hi+"\t"+"%10s"%hi+"\t"+"%10s"%gst) 
+                f3.write("\n")
+                f3.write("=" * 55) 
+                f3.write("\n")
+                f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hi+"\t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
+                f3.write("\n") 
+                f3.write("=" * 55)
+                f2.close() 
+                f3.close()
+                print("Data saved")
     except Exception as e: 
         print(e)
 #loyalty points addition 
@@ -484,7 +488,8 @@ def printbill_cancel():
                  dishname = r[i-1][1]
                  dishqty = r[i-1][5]
                  dishprice = r[i-1][3]
-                 dishtotal = dishprice*dishqty mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+                 dishtotal = dishprice*dishqty 
+                 mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
                  print("total is" ,sumy)
                  f.close()
         except Exception as e:
@@ -604,7 +609,9 @@ def printbill_cancel():
         for i in x:
             print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
         print ("=" * 55)
-        gst = (sumyy/100)*15 memdisc = (sumyy/20) gtotal = (sumyy+(2*gst))
+        gst = (sumyy/100)*15 
+        memdisc = (sumyy/20) 
+        gtotal = (sumyy+(2*gst))
         print ("%25s"%"Total","%5s"%hii,"%10s"%hii,"%10s"%float(sumyy)) 
         print ("%25s"%"CGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst) 
         print ("%25s"%"SGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst)
@@ -663,78 +670,75 @@ def printbill_cancel():
         print("Invalid Entry")
 #trucating bill table
 #status: untested
-def truncate():
-    print(" ")
-    try:
-        cursor = mydb.cursor()
-        sql = '''truncate billtest'''
-        cursor.execute(sql)
-        print("Bill Table Reset")
-    except Exception as e:
-        print(e)
+    def truncate():
+        print(" ")
+        try:
+            cursor = mydb.cursor()
+            sql = '''truncate billtest'''
+            cursor.execute(sql)
+            print("Bill Table Reset")
+        except Exception as e:
+            print(e)
 #check loyalty points
 #status: untested
         
-def knowloyaltypoints():
-    try:
-        cursor = mydb.cursor()
-        sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
-        cursor.execute(sql)
-        r=cursor.fetchall()
-        #print(r)
-        mempoints = r[0][5]
-        print("The total points you have available are", mempoints)
-        evaluation = (mempoints*0.4)
-        print("The total points are worth”, evaluation")
-    except Exception as e:
-        print(e)
+    def knowloyaltypoints():
+        try:
+            cursor = mydb.cursor()
+            sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
+            cursor.execute(sql)
+            r=cursor.fetchall()
+            #print(r)
+            mempoints = r[0][5]
+            print("The total points you have available are", mempoints)
+            evaluation = (mempoints*0.4)
+            print("The total points are worth”, evaluation")
+        except Exception as e:
+            print(e)
 #running code
 #status: untested
-def coderun():
-    global memberconfirm
-    membercheck = int(input("Hi, do you have a membership? Y/N ")) 
-    if membercheck == "Y" or membercheck == "y":
-        memberverify()
-    else:
-        registermem = int(input("Enter 1 to register, Enter 0 to continue without membership "))
-        if registermem == 1:
-            registerprocess()
-            memberconfirm = 0
+    def coderun():
+        global memberconfirm
+        membercheck = int(input("Hi, do you have a membership? Y/N ")) 
+        if membercheck == "Y" or membercheck == "y":
+            memberverify()
         else:
-            print("Continuing without membership")
-            memberconfirm = 0
-    coderunn = 1
-    while coderunn == 1:
-        print("Please choose an option from the following...")
-        print(" ")
-        print("1. Add Dish")
-        print("2. Modify Qty")
-        print("3. Delete Dish")
-        print("4. Print Bill")
-        print("5. Cancel Order")
-        print("6. Know your loyalty points")
-        print(" ")
-        option = int(input("Enter your choice:"))
-        if option == 1:
-            adddish()
-        elif option == 2:
-            modifyqty()
-        elif option == 3:
-            deletedish()
-        elif option == 4:
-            printing()
-            truncate()
-        elif option == 5:
-            printbill_cancel()
-            truncate()
-        elif option == 6:
-            knowloyaltypoints()
-        else:
-            print("Invalid entry")
-        new = int(input("Press 1 to continue, 0 to exit"))
-        new = coderunn
+            registermem = int(input("Enter 1 to register, Enter 0 to continue without membership "))
+            if registermem == 1:
+                registerprocess()
+                memberconfirm = 0
+            else:
+                print("Continuing without membership")
+                memberconfirm = 0
+        coderunn = 1
+        while coderunn == 1:
+            print("Please choose an option from the following...")
+            print(" ")
+            print("1. Add Dish")
+            print("2. Modify Qty")
+            print("3. Delete Dish")
+            print("4. Print Bill")
+            print("5. Cancel Order")
+            print("6. Know your loyalty points")
+            print(" ")
+            option = int(input("Enter your choice:"))
+            if option == 1:
+                adddish()
+            elif option == 2:
+                modifyqty()
+            elif option == 3:
+                deletedish()
+            elif option == 4:
+                printing()
+                truncate()
+            elif option == 5:
+                printbill_cancel()
+                truncate()
+            elif option == 6:
+                knowloyaltypoints()
+            else:
+                print("Invalid entry")
+            new = int(input("Press 1 to continue, 0 to exit"))
+            new = coderunn
 
-
-
-
-coderun()
+    coderun()
