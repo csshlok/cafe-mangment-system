@@ -693,20 +693,18 @@ def coderun():
         else:
             print("Continuing without membership")
             memberconfirm = 0
-                
     coderunn = 1
     while coderunn == 1:
-        print(“Please choose an option from the following...”)
-        print(“ “)
-        print(“1. Add Dish”)
-        print(“2. Modify Qty”)
-        print(“3. Delete Dish”)
-        print(“4. Print Bill”)
-        print(“5. Cancel Order”)
-        print(“6. Know your loyalty points”)
-        print(“ “)
-        
-        option = int(input(“Enter your choice”))
+        print("Please choose an option from the following...")
+        print(" ")
+        print("1. Add Dish")
+        print("2. Modify Qty")
+        print("3. Delete Dish")
+        print("4. Print Bill")
+        print("5. Cancel Order")
+        print("6. Know your loyalty points")
+        print(" ")
+        option = int(input("Enter your choice:"))
         if option == 1:
             adddish()
         elif option == 2:
@@ -722,7 +720,10 @@ def coderun():
         elif option == 6:
             knowloyaltypoints()
         else:
-            print(“Invalid entry”)
-        new = int(input(“Press 1 to continue, 0 to exit”))
+            print("Invalid entry")
+        new = int(input("Press 1 to continue, 0 to exit"))
         new = coderunn
+
+
+        
 coderun()
