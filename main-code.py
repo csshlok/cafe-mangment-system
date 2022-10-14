@@ -651,3 +651,32 @@ def printbill_cancel():
         print("Data Saved")
     else:
         print("Invalid Entry")
+#trucating bill table
+#status: OPERATIONAL
+def truncate():
+    print(“ “)
+    try:
+        cursor = mydb.cursor()
+        sql = “truncate billtest”
+        cursor.execute(sql)
+        print(“Bill Table Reset”)
+    except Exception as e:
+        print(e)
+#check loyalty points
+#status: OPERATIONAL
+        
+def knowloyaltypoints():
+    try:
+        cursor = mydb.cursor()
+        sql = “select * from membershipdetails, loyaltypoints 
+where  membershipdetails.membershipid=loyaltypoints.membershipid  
+and loyaltypoints.membershipid =”+str(memid)+”;”
+        cursor.execute(sql)
+        r=cursor.fetchall()
+        #print(r)
+        mempoints = r[0][5]
+        print(“The total points you have available are”, mempoints)
+        evaluation = (mempoints*0.4)
+        print(“The total points are worth”, evaluation)
+    except Exception as e:
+        print(e)
