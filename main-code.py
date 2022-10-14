@@ -586,21 +586,22 @@ def printbill_cancel():
             print(e)
         print("total is" ,sumyy) 
         f.close()
-    ############### P R I N T I N G ###################
-    f2=open(filename, mode="r") 
-    x=csv.reader(f2, delimiter=",") 
-    global hii
-    hii=" "
-    print (" ")
-    print ("INVOICE - CANCELLED") 
-    print ("=" * 55) 
-    print(datetime_object)
-    print ("Emergency")
-    print ("=" * 55)
-    print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
-    print ("=" * 55) 
-    for i in x:
-        print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) print ("=" * 55)
+        ############### P R I N T I N G ###################
+        f2=open(filename, mode="r") 
+        x=csv.reader(f2, delimiter=",") 
+        global hii
+        hii=" "
+        print (" ")
+        print ("INVOICE - CANCELLED") 
+        print ("=" * 55) 
+        print(datetime_object)
+        print ("Emergency")
+        print ("=" * 55)
+        print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate", "%10s"%"Total")
+        print ("=" * 55) 
+        for i in x:
+            print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3]) 
+        print ("=" * 55)
         gst = (sumyy/100)*15 memdisc = (sumyy/20) gtotal = (sumyy+(2*gst))
         print ("%25s"%"Total","%5s"%hii,"%10s"%hii,"%10s"%float(sumyy)) 
         print ("%25s"%"CGST(15%)","%5s"%hii,"%10s"%hii,"%10s"%gst) 
@@ -613,25 +614,32 @@ def printbill_cancel():
         f3 = open(filenametxt, "a")
         f2=open(filename, mode="r")
         x=csv.reader(f2, delimiter=",")
-        f3.write("INVOICE \n") f3.write("=" * 55) f3.write("\n") f3.write(str(datetime_object)) f3.write("\n") f3.write("Emergency") f3.write("\n")
-f3.write("=" * 55)
-f3.write("\n") f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\
-t""%10s"%"Total") f3.write("\n")
-f3.write("=" * 55)
-final=()
-for i in x:
-global aaa
-global bbb
-global ccc
-global ddd
-aaa=i[0]
-bbb=i[1]
-ccc=i[2]
-ddd=i[3]
-final = aaa+"\t"+bbb+"\t"+ccc+"\t"+ddd f3.write("\n")
-#print(final)
-f3.write(str(final)) f3.write("\n")
-f3.write("=" * 55) f3.write("\n")
+        f3.write("INVOICE \n") f3.write("=" * 55) 
+        f3.write("\n") f3.write(str(datetime_object)) 
+        f3.write("\n") 
+        f3.write("Emergency") 
+        f3.write("\n")
+        f3.write("=" * 55)
+        f3.write("\n") 
+        f3.writelines("%25s"%"Item""\t""%5s"%"Qty""\t""%10s"%"Rate""\t""%10s"%"Total") f3.write("\n")
+        f3.write("=" * 55)
+        final=()
+        for i in x:
+            global aaa
+            global bbb
+            global ccc
+            global ddd
+            aaa=i[0]
+            bbb=i[1]
+            ccc=i[2]
+            ddd=i[3]
+            final = aaa+"\t"+bbb+"\t"+ccc+"\t"+ddd 
+            f3.write("\n")
+            #print(final)
+            f3.write(str(final)) 
+            f3.write("\n")
+        f3.write("=" * 55) 
+        f3.write("\n")
 f3.write("%25s"%"Total"+’\t’+"%5s"%hii+’\t’+"%10s"%hii+’\ t’+"%10s"%float(sumyy))
 f3.write("\n") f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hii+"\t"+"%10s"%hii+"\
 t"+"%10s"%gst) f3.write("\n")
@@ -643,8 +651,3 @@ f2.close() f3.close()
 print("Data Saved")
 else:
 print("Invalid Entry")
-#trucating bill table #status: OPERATIONAL
-def truncate(): print(" ")
-try:
-cursor = mydb.cursor() sql = "truncate billtest" cursor.execute(sql) print("Bill Table Reset")
-except Exception as e: print(e)
