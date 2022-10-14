@@ -640,12 +640,17 @@ def printbill_cancel():
             f3.write("\n")
         f3.write("=" * 55) 
         f3.write("\n")
-        f3.write("%25s"%"Total"+’\t’+"%5s"%hii+’\t’+"%10s"%hii+’\ t’+"%10s"%float(sumyy))
-        f3.write("\n") f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hii+"\t"+"%10s"%hii+"\t"+"%10s"%gst) f3.write("\n")
+        f3.write("%25s"%"Total"+"\t"+"%5s"%hii+"\t"+"%10s"%hii+"\t"+"%10s"%float(sumyy))
+        f3.write("\n") 
+        f3.write("%25s"%"CGST(15%)"+"\t"+"%5s"%hii+"\t"+"%10s"%hii+"\t"+"%10s"%gst) 
+        f3.write("\n")
         f3.write("%25s"%"SGST(15%)"+"\t"+"%5s"%hii+"\t"+"%10s"%hii+"\ t"+"%10s"%gst)
-        f3.write("\n") f3.write("=" * 55) f3.write("\n")
+        f3.write("\n") 
+        f3.write("=" * 55) 
+        f3.write("\n")
         f3.write("%25s"%"GRAND TOTAL"+"\t"+"%5s"%hii+"\ t"+"%10s"%"INR"+"\t"+"%10s"%gtotal)
-        f3.write("\n") f3.write("=" * 55)
+        f3.write("\n") 
+        f3.write("=" * 55)
         f2.close()
         f3.close()
         print("Data Saved")
@@ -725,5 +730,6 @@ def coderun():
         new = coderunn
 
 
-        
+
+
 coderun()
