@@ -154,7 +154,7 @@ def modifyqty():
     modifyqty = int(input("Enter New Qty"))
     try:
         mycursor = mydb.cursor()
-        sql = '''Update billtest set qty=’"+ str(modifyqty) +"’ where dishid='''+ str(modifydishid) +";"
+        sql = '''Update billtest set qty=''' + str(modifyqty) + ''' where dishid='''+ str(modifydishid) +''';'''
         #to test by print(sql)
         mycursor.execute(sql)
         print("Record Updated")
