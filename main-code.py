@@ -186,7 +186,7 @@ def deletedish():
     try:
         mycursor = mydb.cursor()
         del1=input("Enter dishid to be deleted")
-        sql = '''delete from billtest where dishid=''' + str(del1) + ";"
+        sql = '''delete from billtest where dishid=''' + str(del1) + ''';'''
         mycursor.execute(sql)
         mydb.commit()
         print("Dish Deleted")
@@ -258,36 +258,36 @@ def printing():
                         break 
                 except Exception as e:
                     print(e)
-            ############### P R I N T I N G ( M E M B E R ) ###################
-            f2=open(filename, mode="r") 
-            x=csv.reader(f2, delimiter=",") 
-            global hi
-            hi=" " 
-            print (" ")
-            print ("INVOICE") 
-            print ("="* 55) 
-            print(datetime_object)
-            print ("%25s"%cust_name, "%5s"%hi, "%10s"%hi,"%10s"%cust_no)
-            print ("=" * 55)
-            print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate","%10s"%"Total")
-            print ("="* 55)
-            for i in x:
-                print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3])
-                print ("="*55)
-                gst = (sumy/100)*15
-                memdisc = (sumy/20)
-                gtotal = (sumy+(2*gst))-memdisc-inrdeduct
-                add_loyaltypoints()
-                print ("%25s"%"Total","%5s"%"hi","%10s"%"hi","%10s"%float(sumy)) 
-                print ("%25s"%"Member Discount","%5s"%hi,"%10s"%"-","%10s"%memdisc)
-                print ("%25s"%"Points Earned","%5s"%hi,"%10s"%hi,"%10s"%pointsearned)
-                print ("%25s"%"Evaluation of Points Used","%5s"%hi,"%10s"%"- ","%10s"%inrdeduct)
-                print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst)
-                print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst)
+                ############### P R I N T I N G ( M E M B E R ) ###################
+                f2=open(filename, mode="r") 
+                x=csv.reader(f2, delimiter=",") 
+                global hi
+                hi=" " 
+                print (" ")
+                print ("INVOICE") 
+                print ("="* 55) 
+                print(datetime_object)
+                print ("%25s"%cust_name, "%5s"%hi, "%10s"%hi,"%10s"%cust_no)
                 print ("=" * 55)
-                print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal)
-                print ("=" * 55) 
-            f2.close()
+                print ("%25s"%"Item", "%5s"%"Qty", "%10s"%"Rate","%10s"%"Total")
+                print ("="* 55)
+                for i in x:
+                    print ("%25s"%i[0],"%5s"%i[1],"%10s"%i[2],"%10s"%i[3])
+                    print ("="*55)
+                    gst = (sumy/100)*15
+                    memdisc = (sumy/20)
+                    gtotal = (sumy+(2*gst))-memdisc-inrdeduct
+                    add_loyaltypoints()
+                    print ("%25s"%"Total","%5s"%"hi","%10s"%"hi","%10s"%float(sumy)) 
+                    print ("%25s"%"Member Discount","%5s"%hi,"%10s"%"-","%10s"%memdisc)
+                    print ("%25s"%"Points Earned","%5s"%hi,"%10s"%hi,"%10s"%pointsearned)
+                    print ("%25s"%"Evaluation of Points Used","%5s"%hi,"%10s"%"- ","%10s"%inrdeduct)
+                    print ("%25s"%"CGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst)
+                    print ("%25s"%"SGST(15%)","%5s"%hi,"%10s"%hi,"%10s"%gst)
+                    print ("=" * 55)
+                    print ("%25s"%"GRAND TOTAL","%5s"%hi,"%10s"%"INR","%10s"%gtotal)
+                    print ("=" * 55) 
+                f2.close()
              ############### S T O R A G E ( M E M B E R ) ###################
             f3 = open(#filename, "a") 
             f2=open(#filename, mode="r")
