@@ -1,3 +1,4 @@
+from logging import exception
 from tkinter import Image
 import mysql.connector
 mydb = mysql.connector.connect(host='localhost', user='root', password='Ggn@0124', database='project')
@@ -569,7 +570,7 @@ def printbill_cancel():
         print("Data Saved")
     elif cancelchoice == 5:
         print("We hope everythings alright.")
-        pen(filename, mode="a")
+        f=open(filename, mode="a")
         mywriter = csv.writer(f, delimiter = ",")
         try:
             cursor = mydb.cursor()
@@ -589,7 +590,7 @@ def printbill_cancel():
                 dishprice = r[i-1][3] 
                 dishtotal = dishprice*dishqty
         mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
-        except Exception as e: 
+        except Exception as e:
             print(e)
         print("total is" ,sumyy) 
         f.close()
@@ -670,15 +671,15 @@ def printbill_cancel():
         print("Invalid Entry")
 #trucating bill table
 #status: untested
-    def truncate():
-        print(" ")
-        try:
-            cursor = mydb.cursor()
-            sql = '''truncate billtest'''
-            cursor.execute(sql)
-            print("Bill Table Reset")
-        except Exception as e:
-            print(e)
+def truncate():
+    print(" ")
+    try:
+        cursor = mydb.cursor()
+        sql = '''truncate billtest'''
+        cursor.execute(sql)
+        print("Bill Table Reset")
+    except Exception as e:
+        print(e)
 #check loyalty points
 #status: untested
         
