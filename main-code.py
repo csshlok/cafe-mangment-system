@@ -679,20 +679,19 @@ def knowloyaltypoints():
     except Exception as e:
         print(e)
 #running code
-#status: OPERATIONAL
+#status: untested
 def coderun():
     global memberconfirm
-    membercheck = int(input(“Hi, do you have a membership? 1/0 “)) 
-    if membercheck == 1:
+    membercheck = int(input("Hi, do you have a membership? Y/N ")) 
+    if membercheck == "Y" or membercheck == "y":
         memberverify()
     else:
-        registermem = int(input(“Enter 1 to register, Enter 0 to 
-continue without membership “))
+        registermem = int(input("Enter 1 to register, Enter 0 to continue without membership "))
         if registermem == 1:
             registerprocess()
             memberconfirm = 0
         else:
-            print(“Continuing without membership”)
+            print("Continuing without membership")
             memberconfirm = 0
                 
     coderunn = 1
