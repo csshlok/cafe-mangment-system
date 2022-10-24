@@ -1,10 +1,10 @@
 from logging import exception
-from tkinter import Image
+#from tkinter import Image
 import mysql.connector
 mydb = mysql.connector.connect(host='localhost', user='root', password='Ggn@0124', database='project')
 import datetime
 import csv
-from PIL import image
+#from PIL import image
 
 ###CODE START###
 ########MENU#########
@@ -703,7 +703,7 @@ def knowloyaltypoints():
 #status: untested
 def coderun():
     global memberconfirm
-    membercheck = int(input("Hi, do you have a membership? Y/N ")) 
+    membercheck = (input("Hi, do you have a membership? Y/N ")) 
     if membercheck == "Y" or membercheck == "y":
         memberverify()
     else:
