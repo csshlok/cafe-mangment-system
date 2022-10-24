@@ -591,7 +591,7 @@ def printbill_cancel():
                 dishtotal = dishprice*dishqty
         mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
         except Exception as e:
-        print(e)
+            print(e)
         print("total is" ,sumyy) 
         f.close()
         ############### P R I N T I N G ###################
@@ -671,31 +671,31 @@ def printbill_cancel():
         print("Invalid Entry")
 #trucating bill table
 #status: untested
-    def truncate():
-        print(" ")
-        try:
-            cursor = mydb.cursor()
-            sql = '''truncate billtest'''
-            cursor.execute(sql)
-            print("Bill Table Reset")
-        except Exception as e:
-            print(e)
+def truncate():
+    print(" ")
+    try:
+        cursor = mydb.cursor()
+        sql = '''truncate billtest'''
+        cursor.execute(sql)
+        print("Bill Table Reset")
+    except Exception as e:
+        print(e)
 #check loyalty points
 #status: untested
         
-    def knowloyaltypoints():
-        try:
-            cursor = mydb.cursor()
-            sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
-            cursor.execute(sql)
-            r=cursor.fetchall()
-            #print(r)
-            mempoints = r[0][5]
-            print("The total points you have available are", mempoints)
-            evaluation = (mempoints*0.4)
-            print("The total points are worth”, evaluation")
-        except Exception as e:
-            print(e)
+def knowloyaltypoints():
+    try:
+        cursor = mydb.cursor()
+        sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
+        cursor.execute(sql)
+        r=cursor.fetchall()
+        #print(r)
+        mempoints = r[0][5]
+        print("The total points you have available are", mempoints)
+        evaluation = (mempoints*0.4)
+        print("The total points are worth”, evaluation")
+    except Exception as e:
+        print(e)
 #running code
 #status: untested
 def coderun():
