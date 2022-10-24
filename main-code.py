@@ -591,7 +591,7 @@ def printbill_cancel():
                 dishtotal = dishprice*dishqty
         mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
         except Exception as e:
-            print(e)
+        print(e)
         print("total is" ,sumyy) 
         f.close()
         ############### P R I N T I N G ###################
