@@ -8,3 +8,6 @@ Change log:
 {11:55:10: Gonna tell my kids that all it took was a pack of monster and one sleepless night}
 
 06/10: FINISHED SOME SHIT
+
+24/10: All errors are fixed and archit is an idiot
+
