@@ -574,24 +574,27 @@ def printbill_cancel():
         mywriter = csv.writer(f, delimiter = ",")
         try:
             cursor = mydb.cursor()
-            sql = '''select * from menu m, billtest b where m.dishid=b.dishid;''' 
+            sql = '''select * from menu m, billtest b where m.dishid=b.dishid;'''
             cursor.execute(sql)
-            r=cursor.fetchall() #print(r)
+            r=cursor.fetchall()
+            #print(r)
             global sumyy
             sumyy = 0
             i=0
             while i < len(r):
                 a = r[i][3]*r[i][5]
-                print("total of " + r[i][1] + str(a)) 
+                print("total of" + r[i][1] + str(a))
                 sumyy = sumyy + a
                 i=i+1
                 dishname = r[i-1][1]
                 dishqty = r[i-1][5]
-                dishprice = r[i-1][3] 
+                dishprice = r[i-1][3]
                 dishtotal = dishprice*dishqty
-        mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+                mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
+        
         except Exception as e:
-            print(e)
+            print(e)    
+        
         print("total is" ,sumyy) 
         f.close()
         ############### P R I N T I N G ###################
