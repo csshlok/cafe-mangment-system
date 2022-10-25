@@ -112,7 +112,7 @@ def registerprocess():
         print(e)
 
 #adding a dish
-#status: untested
+#status: OPERATIONAL
  
 def adddish():
     print("Adding a Dish")
@@ -131,7 +131,7 @@ def adddish():
         print(e)
 
 #modify the quantity of a dish
-#status: untested
+#status: OPERATIONAL
  
 def modifyqty():
     print("Modify Quantity")
