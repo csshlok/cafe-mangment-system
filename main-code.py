@@ -116,7 +116,7 @@ def registerprocess():
  
 def adddish():
     print("Adding a Dish")
-    im = Image.open(r"#status: will add soon")
+    im = Image.open(r"/Users/pradeep.dwivedi/Downloads/front-hoodie-viewfinderspsd.png")
     im.show()
     try:
         mycursor = mydb.cursor()
