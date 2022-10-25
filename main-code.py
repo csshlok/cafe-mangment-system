@@ -120,8 +120,8 @@ def adddish():
     im.show()
     try:
         mycursor = mydb.cursor()
-        v1=input("Enter DishID")
-        v2=input("Enter Qty")
+        v1=input("Enter DishID:")
+        v2=input("Enter Qty:")
         sql = '''INSERT INTO billtest VALUES (%s, %s)'''
         l = (v1,v2)
         mycursor.execute(sql,l)
@@ -139,7 +139,7 @@ def modifyqty():
         mycursor = mydb.cursor()
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
         mycursor.execute(sql)
-        print("Here is your current order")
+        print("Here is your current order:")
         r=mycursor.fetchall()
         t=0
         print(r)
@@ -151,8 +151,8 @@ def modifyqty():
             mydb.commit()
     except Exception as e:
             print(e)
-    modifydishid = int(input("Enter Dish ID"))
-    modifyqty = int(input("Enter New Qty"))
+    modifydishid = int(input("Enter Dish ID:"))
+    modifyqty = int(input("Enter New Qty:"))
     try:
         mycursor = mydb.cursor()
         sql = '''Update billtest set qty=''' + str(modifyqty) + ''' where dishid='''+ str(modifydishid) +''';'''
@@ -172,7 +172,7 @@ def deletedish():
         mycursor = mydb.cursor()
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
         mycursor.execute(sql)
-        print("Here is your current order")
+        print("Here is your current order:")
         r=mycursor.fetchall()
         t=0
         print(r)
@@ -186,7 +186,7 @@ def deletedish():
         print(e)
     try:
         mycursor = mydb.cursor()
-        del1=input("Enter dishid to be deleted")
+        del1=input("Enter dishid to be deleted:")
         sql = '''delete from billtest where dishid=''' + str(del1) + ''';'''
         mycursor.execute(sql)
         mydb.commit()
