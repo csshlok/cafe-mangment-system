@@ -75,7 +75,7 @@ val = [
 ################### FUNCTIONS/ MAIN CODE STARTS HERE #############
 
 #member verification
-#status: untested
+#status: OPERATIONAL
 def memberverify():
     global memid
     memid = int(input("Enter Member ID:"))
@@ -96,7 +96,7 @@ def memberverify():
         print(e)
  
 #register a member
-#status: untested
+#status: OPERATIONAL
 def registerprocess():
     try:
         mycursor = mydb.cursor()
