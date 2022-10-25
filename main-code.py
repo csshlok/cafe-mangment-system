@@ -78,8 +78,8 @@ val = [
 #status: untested
 def memberverify():
     global memid
-    memid = int(input("Enter Member ID"))
-    print("You entered ", memid)
+    memid = int(input("Enter Member ID:"))
+    print("You entered: ", memid)
     try:
         cursor = mydb.cursor()
         sql = '''select * from membershipdetails where membershipid=''' + str(memid)+";"
@@ -100,10 +100,10 @@ def memberverify():
 def registerprocess():
     try:
         mycursor = mydb.cursor()
-        f1=input("membershipid")
-        f2=input("name")
-        f3=input("dob in yyyy-mm-dd format")
-        f4=input("phone number")
+        f1=input("Membership ID:")
+        f2=input("Name:")
+        f3=input("Enter Date of birth(YYYY-MM-DD):")
+        f4=input("Phone number:")
         sql = '''INSERT INTO membershipdetails VALUES (%s, %s, %s, %s)'''
         l = (f1,f2,f3,f4)
         mycursor.execute(sql,l)
