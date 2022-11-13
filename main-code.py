@@ -420,7 +420,7 @@ def printing():
     except Exception as e: 
         print(e)
 #loyalty points addition 
-#status: untested
+#status: OPERATIONAL
 def add_loyaltypoints():
     try:
         membertotal = sumy-(sumy/10)
@@ -438,7 +438,7 @@ def add_loyaltypoints():
     except Exception as e: 
         print(e)
 #cancellation 
-#status: untested
+#status: OPERATIONAL
 def printbill_cancel():
     print("Cancelling the Bill") 
     datetime_object = datetime.datetime.now() 
@@ -673,7 +673,7 @@ def printbill_cancel():
     else:
         print("#Invalid Entry#")
 #trucating bill table
-#status: untested
+#status: OPERATIONAL
 def truncate():
     print(" ")
     try:
@@ -684,7 +684,7 @@ def truncate():
     except Exception as e:
         print(e)
 #check loyalty points
-#status: untested
+#status: OPERATIONAL
         
 def knowloyaltypoints():
     try:
@@ -700,7 +700,7 @@ def knowloyaltypoints():
     except Exception as e:
         print(e)
 #running code
-#status: untested
+#status: OPERATIONAL
 def coderun():
     global memberconfirm
     membercheck = (input("Hi, do you have a membership? (Y or N): \t ")) 
