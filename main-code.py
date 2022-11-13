@@ -1,5 +1,5 @@
 from logging import exception
-from tkinter import Image
+from tkinter import N, Image
 import mysql.connector
 mydb = mysql.connector.connect(host='localhost', user='root', password='Ggn@0124', database='project')
 import datetime
@@ -73,16 +73,16 @@ val = [
 
 
 ################### FUNCTIONS/ MAIN CODE STARTS HERE #############
-
+memid=0
 #member verification
 #status: OPERATIONAL
 def memberverify():
     global memid
-    memid = int(input("Enter Member ID:"))
+    memid=int(input("Enter Member ID:"))
     print("You entered: ", memid)
     try:
         cursor = mydb.cursor()
-        sql = '''select * from membershipdetails where membershipid=''' + str(memid)+";"
+        sql = '''select * from membershipdetails where membershipid='''+ str(memid)+";"
         cursor.execute(sql)
         r=cursor.fetchone()
         print("Your details are:" , r)
@@ -116,12 +116,12 @@ def registerprocess():
  
 def adddish():
     print("Adding a Dish")
-    im = Image.open(r"/Users/pradeep.dwivedi/Downloads/front-hoodie-viewfinderspsd.png")
+    im = Image.open(r"/Users/pradeep.dwivedi/Menu-CSproject.png")
     im.show()
     try:
         mycursor = mydb.cursor()
-        v1=input("Enter DishID:")
-        v2=input("Enter Qty:")
+        v1=input("Enter DishID: \n")
+        v2=input("Enter Qty: \n")
         sql = '''INSERT INTO billtest VALUES (%s, %s)'''
         l = (v1,v2)
         mycursor.execute(sql,l)
@@ -139,14 +139,14 @@ def modifyqty():
         mycursor = mydb.cursor()
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
         mycursor.execute(sql)
-        print("Here is your current order:")
+        print("Here is your current order:\n")
         r=mycursor.fetchall()
         t=0
         print(r)
         while t < len(r):
-            print("DishID",r[t][0])
-            print("Name",r[t][2])
-            print("QTY",r[t][1])
+            print("DishID:\t",r[t][0])
+            print("Name:\t",r[t][2])
+            print("QTY:\t",r[t][1])
             t=t+1
             mydb.commit()
     except Exception as e:
@@ -155,16 +155,16 @@ def modifyqty():
     modifyqty = int(input("Enter New Qty:"))
     try:
         mycursor = mydb.cursor()
-        sql = '''Update billtest set qty=''' + str(modifyqty) + ''' where dishid='''+ str(modifydishid) +''';'''
+        sql = '''Update billtest set qty='''+ str(modifyqty)+''' where dishid='''+str(modifydishid)+''';'''
         #to test by print(sql)
         mycursor.execute(sql)
-        print("Record Updated")
+        print("#Record Updated#")
         mydb.commit()
     except Exception as e:
         print(e)
 
 #delete the billing of a dish
-#status: untested
+#status: OPERATIONAL
  
 def deletedish():
     print("Delete Dish")
@@ -172,14 +172,14 @@ def deletedish():
         mycursor = mydb.cursor()
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
         mycursor.execute(sql)
-        print("Here is your current order:")
+        print("Here is your current order: \t")
         r=mycursor.fetchall()
         t=0
         print(r)
         while t < len(r):
-            print("DishID",r[t][0])
-            print("Name",r[t][2])
-            print("QTY",r[t][1])
+            print("DishID:",r[t][0])
+            print("Name:",r[t][2])
+            print("QTY:",r[t][1])
             t=t+1
             mydb.commit()
     except Exception as e:
@@ -187,19 +187,19 @@ def deletedish():
     try:
         mycursor = mydb.cursor()
         del1=input("Enter dishid to be deleted:")
-        sql = '''delete from billtest where dishid=''' + str(del1) + ''';'''
+        sql = '''delete from billtest where dishid='''+str(del1)+''';'''
         mycursor.execute(sql)
         mydb.commit()
-        print("Dish Deleted")
+        print("#Dish Deleted#")
     except Exception as e:
         print(e)
  
 #printing the bill
-#status: untested
+#status: OPERATIONAL
  
 def printing():
     ############### F I L E N A M E ###################
-    print("Processing bill")
+    print("###Processing bill###\n")
     datetime_object = datetime.datetime.now() 
     print(datetime_object)
     filename = str(datetime_object)+".csv" 
@@ -219,7 +219,7 @@ def printing():
         i=0
         while i < len(r):
             a = r[i][3]*r[i][5]
-            print("total of" + r[i][1] + str(a)) 
+            print("total of:" + r[i][1] + str(a)) 
             sumy = sumy + a
             i=i+1
             dishname = r[i-1][1]
@@ -227,7 +227,7 @@ def printing():
             dishprice = r[i-1][3]
             dishtotal = dishprice*dishqty
             mywriter.writerow([dishname,dishqty,dishprice,dishtotal])
-            print("total is" ,sumy) 
+            print("total is:" ,sumy) 
             f.close()
             ########### L O Y A L T Y ###############
             if memberconfirm == 1: 
@@ -240,7 +240,7 @@ def printing():
                     sql = '''select points from loyaltypoints where membershipid ='''+str(memid)+";"
                     cursor.execute(sql)
                     r=cursor.fetchall()
-                    print("Available points ", r[0][0], "which evaluate to INR", r[0][0]*0.4)
+                    print("Available points ", r[0][0], "which evaluate to INR:", r[0][0]*0.4)
                     puse = input("do you want to use your points for this transaction y/n")
                     if puse == "y":
                         while pdeduct <= r[0][0]:
@@ -319,7 +319,7 @@ def printing():
                     dd=i[3]
                     final = aa+"\t"+bb+"\t"+cc+"\t"+dd 
                     f3.write("\n")
-                    #print(final)
+                    print(final)
                     f3.write(str(final)) 
                     f3.write("\n")
                 f3.write("=" * 55)
@@ -398,7 +398,7 @@ def printing():
                     ddd=i[3]
                     final = aaa+"\t"+bbb+"\t"+ccc+"\t"+ddd 
                     f3.write("\n")
-                    #print(final)
+                    print(final)
                     f3.write(str(final)) 
                     f3.write("\n")
                 f3.write("=" * 55)
@@ -423,8 +423,8 @@ def printing():
 #status: untested
 def add_loyaltypoints():
     try:
-        #membertotal = sumy-(sumy/10)
-        #print("The new total for member is", membertotal) 
+        membertotal = sumy-(sumy/10)
+        print("The new total for member is", membertotal) 
         global pointsearned
         pointsearned = (sumy/100)*15
         print("The points loyalty points earned are", pointsearned) 
@@ -669,9 +669,9 @@ def printbill_cancel():
         f3.write("=" * 55)
         f2.close()
         f3.close()
-        print("Data Saved")
+        print("Data Saved!")
     else:
-        print("Invalid Entry")
+        print("#Invalid Entry#")
 #trucating bill table
 #status: untested
 def truncate():
@@ -680,7 +680,7 @@ def truncate():
         cursor = mydb.cursor()
         sql = '''truncate billtest'''
         cursor.execute(sql)
-        print("Bill Table Reset")
+        print("#Bill Table Reset#")
     except Exception as e:
         print(e)
 #check loyalty points
@@ -696,36 +696,36 @@ def knowloyaltypoints():
         mempoints = r[0][5]
         print("The total points you have available are", mempoints)
         evaluation = (mempoints*0.4)
-        print("The total points are worth”, evaluation")
+        print("The total points are worth", evaluation)
     except Exception as e:
         print(e)
 #running code
 #status: untested
 def coderun():
     global memberconfirm
-    membercheck = (input("Hi, do you have a membership? Y/N ")) 
+    membercheck = (input("Hi, do you have a membership? (Y or N): \t \n ")) 
     if membercheck == "Y" or membercheck == "y":
         memberverify()
     else:
-        registermem = int(input("Enter 1 to register, Enter 0 to continue without membership "))
+        registermem = int(input("Enter 1 to register, Enter 0 to continue without membership:\t"))
         if registermem == 1:
             registerprocess()
             memberconfirm = 0
         else:
-            print("Continuing without membership")
+            print("#Continuing without membership#\n")
             memberconfirm = 0
     coderunn = 1
     while coderunn == 1:
-        print("Please choose an option from the following...")
+        print("Please choose from the options below \n")
         print(" ")
         print("1. Add Dish")
         print("2. Modify Qty")
         print("3. Delete Dish")
         print("4. Print Bill")
         print("5. Cancel Order")
-        print("6. Know your loyalty points")
-        print(" ")
-        option = int(input("Enter your choice:"))
+        print("6. Know your loyalty points \n")
+        print("")
+        option = int(input("Enter your choice: \t"))
         if option == 1:
             adddish()
         elif option == 2:
@@ -741,8 +741,12 @@ def coderun():
         elif option == 6:
             knowloyaltypoints()
         else:
-            print("Invalid entry")
-        new = int(input("Press 1 to continue, 0 to exit"))
-        new = coderunn
-
+            print("Invalid input, please select correct option from above \n")
+            new = int(input("Press 1 to continue, 0 to exit:\t"))
+            if new==1:
+                new = coderunn
+            elif new==0:
+                break
+            else:
+                print("Invalid choice")
 coderun()
