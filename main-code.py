@@ -81,7 +81,7 @@ def memberverify():
     memid=int(input("Enter Member ID:"))
     print("You entered: ", memid)
     try:
-        cursor = mydb.cursor()
+        cursor = mydb.cursor(buffered=True)
         sql = '''select * from membershipdetails where membershipid='''+ str(memid)+";"
         cursor.execute(sql)
         r=cursor.fetchone()
@@ -99,7 +99,7 @@ def memberverify():
 #status: OPERATIONAL
 def registerprocess():
     try:
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         f1=input("Membership ID:")
         f2=input("Name:")
         f3=input("Enter Date of birth(YYYY-MM-DD):")
@@ -119,7 +119,7 @@ def adddish():
     im = Image.open(r"/Users/pradeep.dwivedi/Menu-CSproject.png")
     im.show()
     try:
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         v1=input("Enter DishID: \n")
         v2=input("Enter Qty: \n")
         sql = '''INSERT INTO billtest VALUES (%s, %s)'''
@@ -136,7 +136,7 @@ def adddish():
 def modifyqty():
     print("Modify Quantity")
     try:
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
         mycursor.execute(sql)
         print("Here is your current order:\n")
@@ -169,7 +169,7 @@ def modifyqty():
 def deletedish():
     print("Delete Dish")
     try:
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         sql = '''select b.dishid, qty, dishname, price from billtest b, menu m where m.dishid=b.dishid;'''
         mycursor.execute(sql)
         print("Here is your current order: \t")
@@ -185,7 +185,7 @@ def deletedish():
     except Exception as e:
         print(e)
     try:
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         del1=input("Enter dishid to be deleted:")
         sql = '''delete from billtest where dishid='''+str(del1)+''';'''
         mycursor.execute(sql)
@@ -209,7 +209,7 @@ def printing():
     f=open(filename, mode="a")
     mywriter = csv.writer(f, delimiter = ",")
     try:
-        cursor = mydb.cursor()
+        cursor = mydb.cursor(buffered=True)
         sql = '''select * from menu m, billtest b where m.dishid=b.dishid;''' 
         cursor.execute(sql)
         r=cursor.fetchall() 
@@ -236,7 +236,7 @@ def printing():
                 global inrdeduct 
                 inrdeduct = 0
                 try:
-                    cursor = mydb.cursor()
+                    cursor = mydb.cursor(buffered=True)
                     sql = '''select points from loyaltypoints where membershipid ='''+str(memid)+";"
                     cursor.execute(sql)
                     r=cursor.fetchall()
@@ -248,7 +248,7 @@ def printing():
                             inrdeduct = pdeduct*0.4
                             print(pdeduct, "points are being deducted",inrdeduct, "INR reduced") 
                             try:
-                                mycursor = mydb.cursor()
+                                mycursor = mydb.cursor(buffered=True)
                                 sql = '''update loyaltypoints set points = points-''' +str(pdeduct)+ '''where membershipid='''+str(memid)+";" 
                                 #print(sql)
                                 mycursor.execute(sql) 
@@ -429,7 +429,7 @@ def add_loyaltypoints():
         pointsearned = (sumy/100)*15
         print("The points loyalty points earned are", pointsearned) 
         pi = pointsearned
-        mycursor = mydb.cursor()
+        mycursor = mydb.cursor(buffered=True)
         sql = '''update loyaltypoints set points = points +'''+str(pi)+''' where membershipid ='''+ str(memid)+''';'''
         print(sql) 
         mycursor.execute(sql) 
@@ -473,7 +473,7 @@ def printbill_cancel():
         f=open(filename, mode="a")
         mywriter = csv.writer(f, delimiter = ",")
         try:
-            cursor = mydb.cursor()
+            cursor = mydb.cursor(buffered=True)
             sql = "select * from menu m, billtest b where m.dishid=b.dishid;"
             cursor.execute(sql) 
             r=cursor.fetchall() 
@@ -573,7 +573,7 @@ def printbill_cancel():
         f=open(filename, mode="a")
         mywriter = csv.writer(f, delimiter = ",")
         try:
-            cursor = mydb.cursor()
+            cursor = mydb.cursor(buffered=True)
             sql = '''select * from menu m, billtest b where m.dishid=b.dishid;'''
             cursor.execute(sql)
             r=cursor.fetchall()
@@ -694,16 +694,16 @@ def knowloyaltypoints():
         r=cursor.fetchall()
         #print(r)
         mempoints = r[0][5]
-        print("The total points you have available are", mempoints)
+        print("The total points you have available are:", mempoints)
         evaluation = (mempoints*0.4)
-        print("The total points are worth", evaluation)
+        print("The total points are worth:", evaluation)
     except Exception as e:
         print(e)
 #running code
 #status: untested
 def coderun():
     global memberconfirm
-    membercheck = (input("Hi, do you have a membership? (Y or N): \t \n ")) 
+    membercheck = (input("Hi, do you have a membership? (Y or N): \t ")) 
     if membercheck == "Y" or membercheck == "y":
         memberverify()
     else:
