@@ -723,7 +723,8 @@ def coderun():
         print("3. Delete Dish")
         print("4. Print Bill")
         print("5. Cancel Order")
-        print("6. Know your loyalty points \n")
+        print("6. Know your loyalty points")
+        print("7. Exit")
         print("")
         option = int(input("Enter your choice: \t"))
         if option == 1:
@@ -740,6 +741,9 @@ def coderun():
             truncate()
         elif option == 6:
             knowloyaltypoints()
+        elif option==7:
+            print("Thank you for using us and we hope we could help you, Have a great day!!")
+            break
         else:
             print("Invalid input, please select correct option from above \n")
             new = int(input("Press 1 to continue, 0 to exit:\t"))
