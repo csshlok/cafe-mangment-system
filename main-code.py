@@ -677,7 +677,7 @@ def printbill_cancel():
 def truncate():
     print(" ")
     try:
-        cursor = mydb.cursor()
+        cursor = mydb.cursor(buffered=True)
         sql = '''truncate billtest'''
         cursor.execute(sql)
         print("#Bill Table Reset#")
@@ -688,7 +688,7 @@ def truncate():
         
 def knowloyaltypoints():
     try:
-        cursor = mydb.cursor()
+        cursor = mydb.cursor(buffered=True)
         sql = '''select * from membershipdetails, loyaltypoints where  membershipdetails.membershipid=loyaltypoints.membershipid  and loyaltypoints.membershipid ='''+str(memid)+''';'''
         cursor.execute(sql)
         r=cursor.fetchall()
